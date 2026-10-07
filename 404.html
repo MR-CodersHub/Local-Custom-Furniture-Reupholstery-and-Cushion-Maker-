@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>404 — Page Not Found | Craftwork Atelier</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#4A3025">
+<link rel="stylesheet" href="assets/css/main.css">
+<style>
+.error-page{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:4rem 1.5rem;position:relative;overflow:hidden}
+.error-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.07}
+.error-content{position:relative;z-index:1;max-width:600px}
+.error-code{font-family:var(--font-serif);font-size:clamp(4.5rem,20vw,13rem);font-weight:700;line-height:1;color:var(--terracotta);opacity:0.15;user-select:none;margin-bottom:-1.5rem}
+.error-icon{font-size:4rem;margin-bottom:1.5rem}
+.error-title{font-family:var(--font-serif);font-size:clamp(2rem,5vw,3.25rem);font-weight:700;margin-bottom:1rem}
+.error-desc{color:var(--text-muted);font-size:1rem;line-height:1.75;margin-bottom:2.5rem;max-width:440px;margin-left:auto;margin-right:auto}
+.error-suggestions{display:flex;flex-wrap:wrap;gap:0.75rem;justify-content:center;margin-top:1rem}
+.error-suggestion{padding:.5rem 1.25rem;background:var(--bg-secondary);border:1px solid var(--border-color);border-radius:var(--radius-full);font-size:.85rem;color:var(--text-secondary);transition:all var(--transition-fast)}
+.error-suggestion:hover{border-color:var(--terracotta);color:var(--terracotta)}
+@media(max-width:480px){.error-page{padding:3rem 1rem}.error-code{font-size:clamp(4rem,22vw,6rem);margin-bottom:-1rem}.error-title{font-size:1.6rem}.error-desc{font-size:0.9rem;margin-bottom:2rem}}
+@media(max-width:360px){.error-suggestions{gap:0.5rem}.error-suggestion{padding:0.4rem 0.85rem;font-size:0.8rem}}
+@media(max-width:320px){.error-page{padding:2.5rem 0.75rem}.error-code{font-size:3.75rem}.error-suggestion{padding:0.35rem 0.7rem;font-size:0.76rem}}
+</style>
+</head>
+<body>
+
+<div class="error-page">
+  <div class="error-content">
+    <div class="error-code">404</div>
+    <div class="error-icon"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:var(--terracotta);margin-bottom:1rem;display:inline-block" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M16 16s-1.5-2-4-2-4 2-4 2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="3"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="3"/></svg></div>
+    <h1 class="error-title">This Page Has Been<br><span class="text-accent">Re-upholstered</span></h1>
+    <p class="error-desc">The page you are looking for seems to have been moved, restored or perhaps replaced with something far more beautiful. Let us help you find what you need.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem">
+      <a href="index.html" class="btn btn-primary btn-lg">Back to Homepage</a>
+      <a href="contact.html" class="btn btn-outline btn-lg">Contact Us</a>
+    </div>
+    <p style="font-size:.85rem;color:var(--text-muted);margin-bottom:1rem">Or explore one of these pages:</p>
+    <div class="error-suggestions">
+      <a href="services.html" class="error-suggestion">Our Services</a>
+      <a href="transformations.html" class="error-suggestion">Transformations</a>
+      <a href="fabric-gallery.html" class="error-suggestion">Fabric Gallery</a>
+      <a href="pricing.html" class="error-suggestion">Pricing</a>
+      <a href="blog.html" class="error-suggestion">Blog</a>
+      <a href="about.html" class="error-suggestion">About Us</a>
+    </div>
+    <p style="font-size:.8rem;color:var(--text-muted);margin-top:2.5rem"><a href="privacy-policy.html" style="color:inherit">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms-conditions.html" style="color:inherit">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="sitemap.html" style="color:inherit">Sitemap</a></p>
+  </div>
+</div>
+
+<div class="toast-container"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
