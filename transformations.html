@@ -1,280 +1,559 @@
 <!DOCTYPE html>
+
 <html lang="en" dir="ltr">
+
 <head>
+
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>Transformations - Craftwork Atelier</title>
+
 <meta name="description" content="Browse our before and after furniture transformation gallery. See the remarkable results of our bespoke upholstery craftsmanship.">
+
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
   <link rel="shortcut icon" href="favicon.ico">
+
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
   <meta name="theme-color" content="#4A3025">
+
 <link rel="stylesheet" href="assets/css/main.css">
+
 <style>
+
 .trans-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%, 280px),1fr));gap:2rem}
+
 .trans-split-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+
 .trans-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);overflow:hidden;transition:transform .35s,box-shadow .35s;box-sizing:border-box}
+
 .trans-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
+
 .trans-card-comparison{position:relative;aspect-ratio:4/3;cursor:ew-resize}
+
 /* Unused legacy card classes removed in favor of global .comparison-wrap */
+
 .trans-card-handle{position:absolute;top:0;bottom:0;left:50%;width:3px;background:white;z-index:3;transform:translateX(-50%);display:flex;align-items:center;justify-content:center}
+
 .trans-card-handle-btn{width:40px;height:40px;min-width:40px;min-height:40px;aspect-ratio:1/1;background:white;border-radius:50%;box-shadow:0 2px 8px rgba(0,0,0,0.2);display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;color:var(--charcoal)}
+
 .trans-card-handle-btn svg{width:16px;height:16px;display:block;flex-shrink:0}
+
 .trans-badge{position:absolute;top:.75rem;right:.75rem;z-index:4}
+
 .trans-badge .badge{background:var(--terracotta);color:#fff;border:1px solid rgba(255,255,255,.3);box-shadow:0 4px 12px rgba(0,0,0,.35)}
+
 .trans-badge .badge-brass{background:var(--brass);color:#fff}
+
 .trans-badge .badge-sage{background:var(--sage);color:#fff}
+
 .trans-card-body{padding:1.5rem;box-sizing:border-box}
+
 .trans-card-title{font-family:var(--font-serif);font-size:1.1rem;font-weight:600;margin-bottom:.4rem}
+
 .trans-meta{display:flex;gap:1rem;font-size:.78rem;color:var(--text-muted);flex-wrap:wrap}
+
 .trans-card-desc{font-size:.85rem;color:var(--text-muted);line-height:1.65;margin-top:.6rem}
+
 .fabric-filter-tabs{justify-content:center}
+
 .stat-item{padding:2rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center}
+
 .stat-icon{width:52px;height:52px;border-radius:14px;background:rgba(201,168,107,.14);border:1px solid rgba(201,168,107,.3);display:flex;align-items:center;justify-content:center;color:var(--brass-light);margin-bottom:1rem;flex-shrink:0;line-height:0}
+
 .stat-icon svg{width:26px;height:26px;display:block;margin:auto;flex-shrink:0}
 
+
+
 @media(max-width:1024px){
+
   .trans-grid{gap:1.5rem}
+
   .trans-split-grid{gap:2.5rem}
+
 }
+
 @media(max-width:760px){
+
   .trans-split-grid{grid-template-columns:1fr !important;gap:2rem !important}
+
 }
+
 @media(max-width:480px){
+
   .trans-grid{grid-template-columns:1fr;gap:1.25rem}
+
   .trans-card-body{padding:1.15rem}
+
   .trans-card-title{font-size:1rem}
+
 }
+
 @media(max-width:360px){
+
   .trans-card-body{padding:1rem 0.85rem}
+
   .trans-meta{gap:0.5rem;font-size:0.75rem}
+
   .trans-card-handle-btn{width:34px;height:34px;min-width:34px;min-height:34px}
+
 }
+
 @media(max-width:320px){
+
   .trans-card-body{padding:0.85rem 0.65rem}
+
   .trans-meta{font-size:0.72rem}
+
 }
+
 </style>
+
 </head>
+
 <body>
+
 <nav class="navbar transparent-nav scrolled" id="navbar"><div class="container"><div class="nav-inner">
+
 <a href="index.html" class="nav-logo"><span class="nav-logo-name">Craftwork Atelier</span><span class="nav-logo-tagline">Bespoke Upholstery &amp; Cushions</span></a>
+
       <ul class="nav-links">
+
         <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+
         <li class="nav-item"><a href="index2.html" class="nav-link">Home 2</a></li>
+
         <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
         <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+
         <li class="nav-item">
+
           <a href="fabric-gallery.html" class="nav-link active">Gallery <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></a>
+
           <div class="nav-dropdown">
+
             <a href="fabric-gallery.html">Fabric Gallery</a>
+
             <a href="transformations.html">Transformations</a>
+
           </div>
+
         </li>
+
         <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+
         <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+
         <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
       </ul>
+
       <div class="nav-controls">
+
         <button class="nav-toggle-btn" data-theme-toggle title="Toggle Dark Mode" aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+
         <button class="nav-toggle-btn" data-rtl-toggle title="Toggle RTL">RTL</button>
+
         <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+
         <a href="contact.html" class="btn btn-primary btn-sm">Get a Quote</a>
+
         <button class="hamburger" aria-label="Open Menu"><span></span><span></span><span></span></button>
+
       </div>
+
 </div></div></nav>
+
 <div class="mobile-overlay"></div>
+
 <nav class="mobile-nav">
+
   <button class="mobile-nav-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+
   <div class="mobile-nav-links">
+
     <a href="index.html">Home</a>
+
     <a href="index2.html">Home 2</a>
+
     <a href="about.html">About</a>
+
     <a href="services.html">Services</a>
+
     <a href="fabric-gallery.html">Fabric Gallery</a>
+
     <a href="transformations.html">Transformations</a>
+
     <a href="pricing.html">Pricing</a>
+
     <a href="blog.html">Blog</a>
+
     <a href="contact.html">Contact</a>
+
   </div>
+
   <div class="mobile-nav-actions">
+
     <a href="login.html" class="btn btn-outline">Login</a>
+
     <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+
   </div>
+
 </nav>
+
+
 
 <div class="page-hero"><div class="page-hero-overlay"></div><div class="container"><div class="page-hero-content"><div class="section-label" style="justify-content:center;margin-bottom:1.25rem">Transformations</div><h1 class="page-hero-title">Before &amp; After Transformations</h1><p class="page-hero-desc">Every piece tells a remarkable story. Drag the sliders to reveal the stunning before and after results of our craftsmanship.</p></div></div></div>
 
+
+
 <section class="section"><div class="container">
+
 <div class="section-header text-center reveal"><div class="section-label">Our Portfolio</div><h2 class="section-title">Recent <span class="text-accent">Transformations</span></h2><p class="section-subtitle">Drag the comparison slider on each card to reveal the before and after. Over 4,800 pieces transformed and counting.</p></div>
 
+
+
 <div style="margin-bottom:2.5rem" class="reveal">
+
 <div class="fabric-filter-tabs">
+
 <button class="filter-tab active" data-filter="all">All Pieces</button>
+
 <button class="filter-tab" data-filter="sofa">Sofas</button>
+
 <button class="filter-tab" data-filter="armchair">Armchairs</button>
+
 <button class="filter-tab" data-filter="headboard">Headboards</button>
+
 <button class="filter-tab" data-filter="cushion">Cushions</button>
+
 <button class="filter-tab" data-filter="bench">Benches</button>
+
 </div></div>
 
+
+
 <div class="trans-grid">
+
 <div class="trans-card reveal" data-category="armchair">
+
 <div class="trans-card-comparison comparison-wrap"><div class="comparison-after"><img src="assets/images/armchair-after.jpg" alt="After: Victorian Wing Chair in Sage Velvet"></div><div class="comparison-before"><img src="assets/images/armchair-before.jpg" alt="Before: Victorian Wing Chair worn and frayed"></div><div class="comparison-handle"><div class="trans-card-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div><div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div><div class="trans-badge"><span class="badge badge-terracotta">Armchair</span></div></div>
+
 <div class="trans-card-body"><div class="trans-card-title">Victorian Wing Chair in Sage Velvet</div><div class="trans-meta"><span>Sage Green Velvet</span><span>&#183;</span><span>3 weeks</span><span>&#183;</span><span>£345</span></div><p class="trans-card-desc">Stripped to the frame, re-sprung by hand and rebuilt with fresh foam, then finished in sage velvet with piped seams and a new welt base.</p></div>
+
 </div>
+
 <div class="trans-card reveal delay-2" data-category="sofa">
+
 <div class="trans-card-comparison comparison-wrap"><div class="comparison-after"><img src="assets/images/custom-sofa-teal.jpg" alt="After: Edwardian 3-Seat Sofa in Teal Velvet"></div><div class="comparison-before"><img src="assets/images/sofa-teal-before.jpg" alt="Before: Edwardian 3-Seat Sofa worn and distressed"></div><div class="comparison-handle"><div class="trans-card-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div><div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div><div class="trans-badge"><span class="badge badge-brass">Sofa</span></div></div>
+
 <div class="trans-card-body"><div class="trans-card-title">Edwardian 3-Seat Sofa in Teal Velvet</div><div class="trans-meta"><span>Crushed Teal Velvet</span><span>&#183;</span><span>4 weeks</span><span>&#183;</span><span>£820</span></div><p class="trans-card-desc">Complete strip-down with new webbing, springs and padding, fully re-covered in crushed teal velvet with tailored piped edges.</p></div>
+
 </div>
+
 <div class="trans-card reveal delay-3" data-category="bench">
+
 <div class="trans-card-comparison comparison-wrap"><div class="comparison-after"><img src="assets/images/bench-restored.jpg" alt="After: Georgian Hallway Bench in Peacock Velvet"></div><div class="comparison-before"><img src="assets/images/bench-before.jpg" alt="Before: Georgian Hallway Bench with ripped seat fabric"></div><div class="comparison-handle"><div class="trans-card-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div><div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div><div class="trans-badge"><span class="badge badge-sage">Bench</span></div></div>
+
 <div class="trans-card-body"><div class="trans-card-title">Georgian Hallway Bench in Emerald Velvet</div><div class="trans-meta"><span>Emerald Velvet</span><span>&#183;</span><span>2 weeks</span><span>&#183;</span><span>£265</span></div><p class="trans-card-desc">Frame re-glued and reinforced, deep foam seat built up and upholstered in emerald velvet with classic piped borders.</p></div>
+
 </div>
+
 <div class="trans-card reveal delay-4" data-category="headboard">
+
 <div class="trans-card-comparison comparison-wrap"><div class="comparison-after"><img src="assets/images/headboard-bedroom.jpg" alt="After: King Size Tufted Headboard in Terracotta Velvet"></div><div class="comparison-before"><img src="assets/images/headboard-before.jpg" alt="Before: Stained worn headboard with missing buttons"></div><div class="comparison-handle"><div class="trans-card-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div><div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div><div class="trans-badge"><span class="badge badge-terracotta">Headboard</span></div></div>
+
 <div class="trans-card-body"><div class="trans-card-title">King Size Button-Tufted Headboard</div><div class="trans-meta"><span>Terracotta Linen</span><span>&#183;</span><span>1 week</span><span>&#183;</span><span>£245</span></div><p class="trans-card-desc">New made-to-measure base deep-buttoned entirely by hand and finished in terracotta linen with wall-mount fixings included.</p></div>
+
 </div>
+
 <div class="trans-card reveal delay-5" data-category="sofa">
+
 <div class="trans-card-comparison comparison-wrap"><div class="comparison-after"><img src="assets/images/chesterfield-after.jpg" alt="After: Victorian Chesterfield in Walnut Leather"></div><div class="comparison-before"><img src="assets/images/chesterfield-before.jpg" alt="Before: Cracked peeling leather Chesterfield"></div><div class="comparison-handle"><div class="trans-card-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div><div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div><div class="trans-badge"><span class="badge badge-brass">Chesterfield</span></div></div>
+
 <div class="trans-card-body"><div class="trans-card-title">Victorian Chesterfield in Walnut Leather</div><div class="trans-meta"><span>Aniline Leather</span><span>&#183;</span><span>5 weeks</span><span>&#183;</span><span>£1,240</span></div><p class="trans-card-desc">Full leather restoration — new suspension and padding with hand-applied aniline leather and a freshly buttoned front.</p></div>
+
 </div>
+
 <div class="trans-card reveal delay-6" data-category="cushion">
+
 <div class="trans-card-comparison comparison-wrap"><div class="comparison-after"><img src="assets/images/outdoor-cushions.jpg" alt="After: Garden Lounge Set with Custom Cushions"></div><div class="comparison-before"><img src="assets/images/cushions-before.jpg" alt="Before: Sun-bleached weather-damaged outdoor cushions"></div><div class="comparison-handle"><div class="trans-card-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div><div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div><div class="trans-badge"><span class="badge badge-sage">Outdoor</span></div></div>
+
 <div class="trans-card-body"><div class="trans-card-title">Garden Lounge Set — Custom Cushions</div><div class="trans-meta"><span>Terracotta Sunbrella</span><span>&#183;</span><span>10 days</span><span>&#183;</span><span>£385</span></div><p class="trans-card-desc">Worn pads replaced with quick-dry outdoor inserts and Sunbrella covers, piped with rust-proof ties for all-weather use.</p></div>
+
 </div>
+
 </div>
+
 </div></section>
+
+
 
 <section class="section" style="background:var(--bg-secondary)"><div class="container">
+
 <div class="section-header text-center reveal"><div class="section-label">The Numbers</div><h2 class="section-title">35 Years of <span class="text-accent">Remarkable Results</span></h2></div>
+
 <div class="stats-grid" style="background:var(--walnut);border-radius:var(--radius-xl);overflow:hidden">
+
 <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11v6a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1v-6"/><path d="M2 13a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2"/><path d="M5 11V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><line x1="6" y1="18" x2="6" y2="21"/><line x1="18" y1="18" x2="18" y2="21"/></svg></div><span class="stat-number" data-count="4800" data-suffix="+">4800+</span><span class="stat-label">Pieces Transformed</span></div>
+
 <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><span class="stat-number" data-count="98" data-suffix="%">98%</span><span class="stat-label">5-Star Reviews</span></div>
+
 <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div><span class="stat-number" data-count="500" data-suffix="+">500+</span><span class="stat-label">Fabric Options</span></div>
+
 <div class="stat-item"><div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.6 13.4 7 22l5-3 5 3-1.6-8.6"/></svg></div><span class="stat-number" data-count="35" data-suffix="">35</span><span class="stat-label">Years Experience</span></div>
+
 </div>
+
 </div></section>
 
+
+
 <section class="section"><div class="container">
+
 <div class="trans-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+
 <div class="reveal-left">
+
 <div class="section-label">Full Comparison</div>
+
 <h2 class="section-title">The <span class="text-accent">Remarkable</span> Difference</h2>
-<p style="color:var(--text-muted);margin:1rem 0 1.5rem;line-height:1.75">Drag the slider across the image below to see our transformation results in full detail. This Victorian armchair went from worn and dated to a genuine statement piece.</p>
+
+<p style="color:var(--text-muted);margin:1rem 0 1.5rem;line-height:1.75">Drag the slider across the image below to see our transformation results in full detail. This antique French Bergère armchair went from dilapidated, frayed heirloom to a magnificent royal navy velvet statement piece.</p>
+
 <div style="display:flex;gap:1rem;flex-wrap:wrap"><a href="contact.html" class="btn btn-primary">Start Your Transformation</a><a href="services.html" class="btn btn-outline">View Services</a></div>
+
 </div>
+
 <div class="reveal-right">
+
 <div class="comparison-wrap" style="aspect-ratio:4/3">
-<div class="comparison-after"><img src="assets/images/armchair-after.jpg" alt="After: Restored Victorian Wing Chair in Sage Velvet"></div>
-<div class="comparison-before"><img src="assets/images/armchair-before.jpg" alt="Before: Worn and frayed Victorian Wing Chair"></div>
+
+<div class="comparison-after"><img src="assets/images/bergere-chair-after.jpg" alt="After: Restored French Bergère Armchair in Royal Navy Velvet"></div>
+
+<div class="comparison-before"><img src="assets/images/bergere-chair-before.jpg" alt="Before: Dilapidated antique French Bergère Armchair with frayed fabric and damaged caning"></div>
+
 <div class="comparison-handle"><div class="comparison-handle-btn" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="8 4 4 12 8 20"/><polyline points="16 4 20 12 16 20"/></svg></div></div>
+
 <div class="comparison-label label-before">Before</div><div class="comparison-label label-after">After</div>
+
 </div>
+
 </div>
+
 </div>
+
 </div></section>
+
+
 
 <section style="background:var(--walnut);padding:5rem 0;text-align:center;position:relative;overflow:hidden"><img style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.1" src="assets/images/craftsman-workshop.jpg" alt=""><div class="container" style="position:relative;z-index:1"><div class="reveal" style="max-width:550px;margin:0 auto;color:white"><h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;color:white;margin-bottom:1rem">Ready for Your Transformation?</h2><p style="color:rgba(255,255,255,0.65);margin-bottom:2rem;line-height:1.75">Contact us today for a free consultation. Bring your piece — or send photos — and we'll show you what's possible.</p><a href="contact.html" class="btn btn-brass btn-lg">Request Free Consultation</a></div></div></section>
 
+
+
 <footer>
+
   <div class="footer-top">
+
     <div class="container">
+
       <div class="footer-grid">
+
         <div>
+
           <div class="footer-brand-name">Craftwork Atelier</div>
+
           <div class="footer-brand-tagline">Bespoke Upholstery &amp; Cushion Makers</div>
+
           <p class="footer-desc">Restoring cherished furniture and creating bespoke cushions with master craftsmanship, premium fabrics, and genuine passion since 1987.</p>
+
           <div class="footer-socials">
+
             <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+
             <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+
             <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X (Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg></a>
+
             <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+
           </div>
+
         </div>
+
         <div>
+
           <h2 class="footer-col-title">Quick Links</h2>
+
           <ul class="footer-links">
+
             <li><a href="index.html">Home</a></li>
+
             <li><a href="index2.html">Home 2</a></li>
+
             <li><a href="about.html">About</a></li>
+
             <li><a href="services.html">Services</a></li>
+
             <li><a href="fabric-gallery.html">Gallery</a></li>
+
             <li><a href="pricing.html">Pricing</a></li>
+
             <li><a href="blog.html">Blog</a></li>
+
             <li><a href="contact.html">Contact</a></li>
+
           </ul>
+
         </div>
+
         <div>
+
           <h2 class="footer-col-title">Contact Us</h2>
+
           <div class="footer-contact-item">
+
             <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+
             <div class="footer-contact-text"><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">14 Heritage Lane, Notting Hill<br>London W11 2QA</a></div>
+
           </div>
+
           <div class="footer-contact-item">
+
             <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+
             <div class="footer-contact-text"><a href="tel:+442079460123">+44 (0)20 7946 0123</a><br><small>Mon&ndash;Fri 9am&ndash;6pm &middot; Sat 10am&ndash;4pm</small></div>
+
           </div>
+
           <div class="footer-contact-item">
+
             <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div>
+
             <div class="footer-contact-text"><a href="mailto:hello@craftworkatelier.com">hello@craftworkatelier.com</a></div>
+
           </div>
+
         </div>
+
         <div>
+
           <h2 class="footer-col-title">Newsletter</h2>
+
           <p class="footer-newsletter-desc">Fabric spotlights, care tips and exclusive offers &mdash; join 3,200+ subscribers.</p>
+
           <form class="footer-newsletter-form">
+
             <input type="email" name="email" class="footer-newsletter-input" placeholder="Your email address" aria-label="Email address" required>
+
             <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+
           </form>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
+
   <div class="container">
+
     <div class="footer-bottom">
+
       <p class="footer-copyright">&copy; 2026 Craftwork Atelier. All rights reserved.</p>
+
       <div class="footer-bottom-links">
+
         <a href="privacy-policy.html">Privacy Policy</a>
+
         <span class="footer-bottom-sep" aria-hidden="true">|</span>
+
         <a href="terms-conditions.html">Terms &amp; Conditions</a>
+
         <span class="footer-bottom-sep" aria-hidden="true">|</span>
+
         <a href="sitemap.html">Sitemap</a>
+
       </div>
+
     </div>
+
   </div>
+
 </footer>
+
 <div class="lightbox" id="lightbox"><div class="lightbox-inner"><button class="lightbox-close" aria-label="Close lightbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div></div>
+
 <div class="toast-container"></div><button class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+
 <script src="assets/js/main.js"></script>
+
 <script>
+
 (function () {
+
   var tabs = document.querySelectorAll(".fabric-filter-tabs .filter-tab");
+
   var cards = document.querySelectorAll(".trans-grid .trans-card");
+
   if (!tabs.length || !cards.length) return;
+
   tabs.forEach(function (tab) {
+
     tab.addEventListener("click", function () {
+
       tabs.forEach(function (t) { t.classList.remove("active"); });
+
       tab.classList.add("active");
+
       var filter = tab.getAttribute("data-filter");
+
       var visible = [];
+
       cards.forEach(function (card) {
+
         var match = filter === "all" || card.getAttribute("data-category") === filter;
+
         card.style.display = match ? "" : "none";
+
         if (match) visible.push(card);
+
       });
+
       visible.forEach(function (card, idx) {
+
         card.style.opacity = "0";
+
         card.style.transform = "translateY(16px)";
+
         setTimeout(function () {
+
           card.style.transition = "opacity 0.35s ease, transform 0.35s ease";
+
           card.style.opacity = "1";
+
           card.style.transform = "translateY(0)";
+
         }, idx * 60);
+
       });
+
     });
+
   });
+
 })();
+
 </script>
+
 </body></html>
