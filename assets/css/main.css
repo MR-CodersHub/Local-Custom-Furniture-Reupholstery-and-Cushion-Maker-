@@ -20,7 +20,7 @@ h1,h2,h3,h4,h5,h6{font-family:var(--font-serif);line-height:1.2;color:var(--text
 .grid{display:grid;gap:2rem}.grid-2{grid-template-columns:repeat(2,1fr)}.grid-3{grid-template-columns:repeat(3,1fr)}.grid-4{grid-template-columns:repeat(4,1fr)}
 .flex{display:flex}.flex-center{display:flex;align-items:center;justify-content:center}.flex-between{display:flex;align-items:center;justify-content:space-between}
 .gap-sm{gap:0.75rem}.gap-md{gap:1.5rem}.gap-lg{gap:2.5rem}
-.btn{display:inline-flex;align-items:center;gap:0.6rem;padding:0.875rem 2rem;border-radius:var(--radius-full);font-family:var(--font-sans);font-size:0.875rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;transition:all var(--transition-fast);cursor:pointer;border:2px solid transparent;white-space:nowrap;position:relative;overflow:hidden}
+.btn{display:inline-flex;align-items:center;justify-content:center;text-align:center;gap:0.6rem;padding:0.875rem 2rem;border-radius:var(--radius-full);font-family:var(--font-sans);font-size:0.875rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;transition:all var(--transition-fast);cursor:pointer;border:2px solid transparent;white-space:nowrap;position:relative;overflow:hidden}
 .btn-primary{background:var(--terracotta);color:var(--white);border-color:var(--terracotta);box-shadow:0 4px 20px rgba(183,101,74,0.35)}
 .btn-primary:hover{background:var(--accent-hover);border-color:var(--accent-hover);transform:translateY(-2px);box-shadow:0 8px 28px rgba(183,101,74,0.45)}
 .btn-outline{background:transparent;color:var(--text-primary);border-color:var(--border-strong)}
@@ -195,14 +195,14 @@ textarea.form-control{resize:vertical;min-height:130px}
 .file-upload-icon{font-size:2rem;color:var(--brass);margin-bottom:0.75rem}
 .file-upload-text{font-size:0.88rem;color:var(--text-muted)}.file-upload-text strong{color:var(--terracotta)}
 /* COMPARISON */
-.comparison-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;cursor:ew-resize;user-select:none;box-shadow:var(--shadow-xl)}
-.comparison-after,.comparison-before{position:absolute;inset:0;overflow:hidden}
-.comparison-after img,.comparison-before img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
-.comparison-before{z-index:2;width:50%}
-.comparison-before img{width:auto;min-width:200%;max-width:none}
-.comparison-handle{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:3px;background:var(--white);z-index:3;cursor:ew-resize;display:flex;align-items:center;justify-content:center}
-.comparison-handle-btn{width:44px;height:44px;background:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-md);font-size:1rem;color:var(--charcoal);flex-shrink:0}
-.comparison-label{position:absolute;bottom:1.25rem;padding:0.4rem 1rem;background:rgba(0,0,0,0.55);backdrop-filter:blur(8px);border-radius:var(--radius-full);font-size:0.78rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);z-index:4}
+.comparison-wrap{position:relative;border-radius:var(--radius-lg);overflow:hidden;cursor:ew-resize;user-select:none;-webkit-user-select:none;box-shadow:var(--shadow-xl);touch-action:pan-y}
+.comparison-after,.comparison-before{position:absolute;inset:0;width:100%;height:100%;overflow:hidden}
+.comparison-after img,.comparison-before img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;user-select:none;-webkit-user-select:none}
+.comparison-before{z-index:2;clip-path:inset(0 50% 0 0);-webkit-clip-path:inset(0 50% 0 0)}
+.comparison-handle{position:absolute;top:0;bottom:0;left:50%;transform:translateX(-50%);width:3px;background:var(--white);z-index:3;cursor:ew-resize;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.comparison-handle-btn,.trans-card-handle-btn{width:42px;height:42px;min-width:42px;min-height:42px;aspect-ratio:1/1;background:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,0.3);font-size:1rem;color:var(--charcoal);flex-shrink:0;cursor:ew-resize;pointer-events:auto;transition:transform 0.15s ease,box-shadow 0.15s ease}
+.comparison-wrap:hover .comparison-handle-btn,.comparison-wrap:hover .trans-card-handle-btn{transform:scale(1.1);box-shadow:0 6px 20px rgba(0,0,0,0.4)}
+.comparison-label{position:absolute;bottom:1.25rem;padding:0.4rem 1rem;background:rgba(0,0,0,0.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:var(--radius-full);font-size:0.75rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--white);z-index:4;pointer-events:none;box-shadow:0 2px 8px rgba(0,0,0,0.25)}
 .label-before{left:1.25rem}.label-after{right:1.25rem}
 /* Pricing */
 .pricing-card{background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-xl);padding:2.5rem;position:relative;transition:transform var(--transition-med),box-shadow var(--transition-med);overflow:hidden}
@@ -594,7 +594,7 @@ footer a:focus-visible,.footer-newsletter-btn:focus-visible,.footer-newsletter-i
   .stat-number { font-size: 1.6rem; }
   .stat-item { padding: 0.75rem 0.35rem; }
   .process-step-num { width: 50px; height: 50px; font-size: 1.2rem; }
-  .comparison-handle-btn { width: 36px; height: 36px; font-size: 0.85rem; }
+  .comparison-handle-btn, .trans-card-handle-btn { width: 36px; height: 36px; min-width: 36px; min-height: 36px; font-size: 0.85rem; }
   .comparison-label { font-size: 0.66rem; padding: 0.25rem 0.55rem; bottom: 0.75rem; }
   .label-before { left: 0.75rem; }
   .label-after { right: 0.75rem; }
@@ -658,8 +658,8 @@ footer a:focus-visible,.footer-newsletter-btn:focus-visible,.footer-newsletter-i
   .btn-arrow { margin-left: 0.2rem; }
 
   /* Comparison */
-  .comparison-handle-btn { width: 32px; height: 32px; font-size: 0.75rem; }
-  .comparison-handle-btn svg { width: 12px; height: 12px; }
+  .comparison-handle-btn, .trans-card-handle-btn { width: 32px; height: 32px; min-width: 32px; min-height: 32px; font-size: 0.75rem; }
+  .comparison-handle-btn svg, .trans-card-handle-btn svg { width: 12px; height: 12px; }
   .comparison-label { font-size: 0.6rem; padding: 0.2rem 0.45rem; bottom: 0.6rem; letter-spacing: 0.06em; }
   .label-before { left: 0.5rem; }
   .label-after { right: 0.5rem; }

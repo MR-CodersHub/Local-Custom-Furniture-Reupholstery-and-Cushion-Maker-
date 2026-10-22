@@ -178,20 +178,78 @@ const Comparison = {
       if (!before || !handle) return;
       let dragging = false;
 
-      const update = x => {
-        const rect = wrap.getBoundingClientRect();
-        let pct = ((x - rect.left) / rect.width) * 100;
-        pct = Math.max(5, Math.min(95, pct));
-        before.style.width = pct + "%";
+      const setPos = pct => {
+        pct = Math.max(0, Math.min(100, pct));
+        wrap.style.setProperty("--pos", pct + "%");
+        before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        before.style.webkitClipPath = `inset(0 ${100 - pct}% 0 0)`;
         handle.style.left = pct + "%";
+        wrap.setAttribute("aria-valuenow", Math.round(pct));
       };
 
-      handle.addEventListener("mousedown", e => { dragging = true; e.preventDefault(); });
-      handle.addEventListener("touchstart", () => { dragging = true; }, { passive: true });
-      window.addEventListener("mousemove", e => { if (dragging) update(e.clientX); });
-      window.addEventListener("touchmove", e => { if (dragging) update(e.touches[0].clientX); }, { passive: true });
-      window.addEventListener("mouseup", () => { dragging = false; });
-      window.addEventListener("touchend", () => { dragging = false; });
+      const updateFromEvent = e => {
+        const rect = wrap.getBoundingClientRect();
+        const clientX = (e.touches && e.touches.length > 0) ? e.touches[0].clientX : e.clientX;
+        if (clientX === undefined) return;
+        const pct = ((clientX - rect.left) / rect.width) * 100;
+        setPos(pct);
+      };
+
+      // Set initial 50% position
+      setPos(50);
+
+      // Mouse drag anywhere on wrap
+      wrap.addEventListener("mousedown", e => {
+        dragging = true;
+        updateFromEvent(e);
+        e.preventDefault();
+      });
+
+      window.addEventListener("mousemove", e => {
+        if (!dragging) return;
+        updateFromEvent(e);
+      });
+
+      window.addEventListener("mouseup", () => {
+        dragging = false;
+      });
+
+      // Touch drag anywhere on wrap
+      wrap.addEventListener("touchstart", e => {
+        dragging = true;
+        updateFromEvent(e);
+      }, { passive: true });
+
+      window.addEventListener("touchmove", e => {
+        if (!dragging) return;
+        updateFromEvent(e);
+        if (e.cancelable) e.preventDefault();
+      }, { passive: false });
+
+      window.addEventListener("touchend", () => {
+        dragging = false;
+      });
+      window.addEventListener("touchcancel", () => {
+        dragging = false;
+      });
+
+      // Accessibility: Keyboard arrows
+      wrap.setAttribute("tabindex", "0");
+      wrap.setAttribute("role", "slider");
+      wrap.setAttribute("aria-label", "Before and after comparison slider");
+      wrap.setAttribute("aria-valuemin", "0");
+      wrap.setAttribute("aria-valuemax", "100");
+
+      wrap.addEventListener("keydown", e => {
+        const currentPos = parseFloat(handle.style.left) || 50;
+        if (e.key === "ArrowLeft") {
+          setPos(Math.max(0, currentPos - 5));
+          e.preventDefault();
+        } else if (e.key === "ArrowRight") {
+          setPos(Math.min(100, currentPos + 5));
+          e.preventDefault();
+        }
+      });
     });
   }
 };
