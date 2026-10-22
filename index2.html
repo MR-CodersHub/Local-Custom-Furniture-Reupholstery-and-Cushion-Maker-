@@ -1,573 +1,584 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Craftwork Atelier — Bespoke Furniture Reupholstery &amp; Cushions | London</title>
-  <meta name="description" content="London's premier bespoke upholstery studio. Master-crafted sofa reupholstery, custom cushions and headboard upholstery. Free home collection within M25.">
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-  <meta name="theme-color" content="#4A3025">
-<link rel="stylesheet" href="assets/css/main.css">
-  <style>
-    /* Alt hero - split screen */
-    .hero2 { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: var(--nav-h); }
-    .hero2-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5vw; }
-    .hero2-right { position: relative; }
-    .hero2-right img { width: 100%; height: 100%; object-fit: cover; }
-    .hero2-badge { display: inline-flex; align-items: center; align-self: flex-start; gap: .5rem; padding: .35rem 1rem .35rem .5rem; background: rgba(183,101,74,.08); border: 1px solid rgba(183,101,74,.25); border-radius: var(--radius-full); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 2rem; }
-    .hero2-badge-dot { width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; animation: pulse 2s infinite; }
-    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
-    .hero2-title { font-family: var(--font-serif); font-size: clamp(2.75rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
-    .hero2-title em { color: var(--terracotta); font-style: normal; }
-    .hero2-stats { display: flex; gap: 2.5rem; margin: 2.5rem 0; flex-wrap: wrap; }
-    .hero2-stat-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--terracotta); }
-    .hero2-stat-label { font-size: .78rem; color: var(--text-muted); }
-    .hero2-float-card { position: absolute; bottom: 2rem; left: -2.5rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; box-shadow: var(--shadow-xl); display: flex; align-items: center; gap: .875rem; z-index: 5; min-width: 220px; }
-    .hero2-float-icon { font-size: 1.5rem; }
-    .hero2-float-title { font-size: .88rem; font-weight: 700; }
-    .hero2-float-sub { font-size: .75rem; color: var(--text-muted); }
-    /* Bento Grid */
-    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
-    .bento-1 { grid-column: span 8; grid-row: span 2; }
-    .bento-2 { grid-column: span 4; }
-    .bento-3 { grid-column: span 4; }
-    .bento-4 { grid-column: span 4; }
-    .bento-5 { grid-column: span 4; }
-    .bento-6 { grid-column: span 4; }
-    .bento-cell { border-radius: var(--radius-lg); overflow: hidden; position: relative; }
-    .bento-cell img { width: 100%; height: 100%; object-fit: cover; min-height: 200px; transition: transform var(--transition-slow); }
-    .bento-cell:hover img { transform: scale(1.04); }
-    .bento-cell-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(41,37,34,0.7) 0%, transparent 50%); opacity: 0; transition: opacity var(--transition-fast); }
-    .bento-cell:hover .bento-cell-overlay { opacity: 1; }
-    .bento-cell-caption { position: absolute; bottom: 1rem; left: 1rem; color: white; opacity: 0; transition: opacity var(--transition-fast); }
-    .bento-cell:hover .bento-cell-caption { opacity: 1; }
-    /* Horizontal scroll gallery — converted to 3-per-view slider (no clipping) */
-    .services-slider-wrap { position: relative; }
-    .services-slider-viewport { overflow: hidden; border-radius: var(--radius-lg); padding: 0.5rem 0.25rem 1rem; margin: 0 -0.25rem; }
-    .h-scroll { overflow: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-    .h-scroll::-webkit-scrollbar { display: none; }
-    .h-scroll-track { display: flex; gap: 1.25rem; padding: 0.25rem 0.1rem 0.25rem; width: 100%; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
-    .h-scroll-item { flex: 0 0 calc((100% - 2.5rem) / 3); width: calc((100% - 2.5rem) / 3); max-width: calc((100% - 2.5rem) / 3); border-radius: var(--radius-lg); overflow: hidden; position: relative; background: var(--bg-card); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
-    .h-scroll-item img { width: 100%; aspect-ratio: 3/3.4; object-fit: cover; display: block; }
-    .h-scroll-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; background: linear-gradient(to top, rgba(41,37,34,0.85) 0%, transparent 100%); color: white; }
-    .h-scroll-name { font-family: var(--font-serif); font-weight: 600; font-size: 1rem; }
-    .h-scroll-type { font-size: .78rem; opacity: .7; }
-    .slider-arrow { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--border-strong); background: var(--bg-card); color: var(--text-primary); display: inline-flex; align-items: center; justify-content: center; transition: all var(--transition-fast); flex-shrink: 0; }
-    .slider-arrow svg { width: 20px; height: 20px; display: block; }
-    .slider-arrow:hover:not(:disabled) { background: var(--terracotta); border-color: var(--terracotta); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(183,101,74,.35); }
-    .slider-arrow:disabled { opacity: .35; cursor: not-allowed; }
-    .slider-meta { display: flex; align-items: center; gap: 1rem; }
-    .slider-counter { font-size: .85rem; font-weight: 700; letter-spacing: .08em; color: var(--text-muted); min-width: 52px; text-align: center; }
-    .slider-dots { display: flex; gap: .5rem; justify-content: center; margin-top: 1.25rem; }
-    .slider-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--border-strong); border: none; padding: 0; cursor: pointer; transition: all var(--transition-fast); }
-    .slider-dot.active { width: 28px; background: var(--terracotta); }
-    /* Fix: Portfolio lightbox close button getting clipped */
-    .lightbox { padding: 5rem 1.5rem 2rem; overflow-y: auto; }
-    .lightbox-inner { overflow: visible; max-width: min(92vw, 1000px); width: auto; margin: auto; }
-    .lightbox-img { max-height: 76vh; box-shadow: var(--shadow-xl); }
-    .lightbox-close { top: -3.6rem; right: 0; width: 44px; height: 44px; background: var(--terracotta); border: 1px solid var(--terracotta); color: #fff; z-index: 5; box-shadow: 0 4px 16px rgba(0,0,0,.45); }
-    .lightbox-close:hover { background: var(--accent-hover); transform: scale(1.05); }
-    /* Heritage stat cards */
-    .heritage-card { transition: transform var(--transition-med), box-shadow var(--transition-med); }
-    .heritage-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .heritage-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
-    .heritage-icon svg { width: 26px; height: 26px; display: block; }
-    /* Why Choose Us — fill bottom space */
-    .quote-cta-right-content { display: flex; flex-direction: column; height: 100%; }
-    .why-bottom-cta { margin-top: auto; }
-    /* Interactive Quote CTA */
-    .quote-cta { background: var(--bg-secondary); border-radius: var(--radius-xl); overflow: hidden; }
-    .quote-cta-inner { display: grid; grid-template-columns: 1fr 1fr; }
-    .quote-cta-left { padding: 4rem; }
-    .quote-cta-right { background: var(--walnut); padding: 4rem; position: relative; overflow: hidden; }
-    .quote-cta-right-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; }
-    .quote-cta-right-content { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; }
-    .quote-cta-left .btn { justify-content: center; text-align: center; }
-    @media(max-width:1100px){
-      .hero2{grid-template-columns:1fr;min-height:auto}
-      .hero2-right{height:48vh;min-height:340px}
-      .hero2-left{padding:3rem 1.5rem}
-      .hero2-float-card{left:1rem;bottom:1rem}
-      .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 6}
-      .bento-1{grid-row:span 1}
-      .quote-cta-inner{grid-template-columns:1fr}
-      .h-scroll-item{flex-basis:calc((100% - 1.25rem)/2);width:calc((100% - 1.25rem)/2);max-width:calc((100% - 1.25rem)/2)}
-      .quote-cta-left,.quote-cta-right{padding:2.5rem 1.5rem}
-    }
-    @media(max-width:760px){
-      .slider-meta{width:100%;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
-      .slider-meta .btn{order:3;width:100%;justify-content:center}
-      .story-split-grid{grid-template-columns:1fr !important;gap:2.5rem !important}
-      .heritage-cards-grid{gap:1rem}
-      .quote-cta-left,.quote-cta-right{padding:2.25rem 1.5rem}
-    }
-    @media(max-width:640px){
-      .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 12}
-      .hero2-stats{gap:1.5rem}
-      .h-scroll-item{flex-basis:100%;width:100%;max-width:100%}
-      .slider-arrow{width:46px;height:46px}
-    }
-    @media(max-width:480px){
-      .hero2-right{height:36vh;min-height:240px}
-      .hero2-left{padding:2.25rem 1rem}
-      .hero2-title{font-size:clamp(1.85rem, 7.5vw, 2.4rem)}
-      .hero2-float-card{left:0.75rem;right:0.75rem;bottom:0.75rem;min-width:auto;padding:0.75rem 1rem}
-      .heritage-cards-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important}
-      .heritage-card{padding:1.25rem 0.75rem !important;border-radius:var(--radius-lg) !important}
-      .heritage-card [data-count], .heritage-card div[style*="font-size:3rem"]{font-size:2rem !important}
-      .quote-cta-left,.quote-cta-right{padding:1.75rem 1rem}
-      .why-phone-box{flex-direction:column;align-items:stretch;text-align:center}
-      .why-phone-box .btn{width:100%;justify-content:center}
-    }
-    @media(max-width:360px){
-      .hero2-title{font-size:1.68rem}
-      .hero2-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
-      .hero2-stat-num{font-size:1.6rem}
-      .hero2-right{min-height:220px}
-      .heritage-cards-grid{grid-template-columns:1fr !important}
-      .why-stats-grid{grid-template-columns:1fr !important;gap:0.75rem !important}
-      .why-stats-grid > div{border:none !important;padding:0.35rem 0}
-    }
-    @media(max-width:320px){
-      .hero2-left{padding:1.75rem 0.75rem}
-      .hero2-title{font-size:1.45rem}
-      .hero2-badge{font-size:0.65rem;padding:0.3rem 0.65rem}
-      .hero2-float-card{padding:0.65rem 0.75rem}
-      .hero2-float-title{font-size:0.8rem}
-      .hero2-float-sub{font-size:0.7rem}
-      .quote-cta-left,.quote-cta-right{padding:1.5rem 0.75rem}
-      .slider-arrow{width:38px;height:38px}
-    }
-  </style>
-</head>
-<body>
-
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="container"><div class="nav-inner">
-    <a href="index.html" class="nav-logo"><span class="nav-logo-name">Craftwork Atelier</span><span class="nav-logo-tagline">Bespoke Upholstery &amp; Cushions</span></a>
-          <ul class="nav-links">
-        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="index2.html" class="nav-link active">Home 2</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-        <li class="nav-item">
-          <a href="fabric-gallery.html" class="nav-link">Gallery <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></a>
-          <div class="nav-dropdown">
-            <a href="fabric-gallery.html">Fabric Gallery</a>
-            <a href="transformations.html">Transformations</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-      </ul>
-          <div class="nav-controls">
-        <button class="nav-toggle-btn" data-theme-toggle title="Toggle Dark Mode" aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
-        <button class="nav-toggle-btn" data-rtl-toggle title="Toggle RTL">RTL</button>
-        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
-        <a href="contact.html" class="btn btn-primary btn-sm">Get a Quote</a>
-        <button class="hamburger" aria-label="Open Menu"><span></span><span></span><span></span></button>
-      </div>
-  </div></div>
-</nav>
-<div class="mobile-overlay"></div>
-<nav class="mobile-nav">
-  <button class="mobile-nav-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <div class="mobile-nav-links">
-    <a href="index.html">Home</a>
-    <a href="index2.html">Home 2</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="fabric-gallery.html">Fabric Gallery</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <div class="mobile-nav-actions">
-    <a href="login.html" class="btn btn-outline">Login</a>
-    <a href="contact.html" class="btn btn-primary">Get a Quote</a>
-  </div>
-</nav>
-
-<!-- SECTION 1: Split-Screen Hero -->
-<div class="hero2">
-  <div class="hero2-left">
-    <div class="hero2-badge"><span class="hero2-badge-dot"></span> London's Premier Upholstery Atelier</div>
-    <h1 class="hero2-title">Furniture Doesn't<br>Age — It <em>Evolves</em><br>With Craft</h1>
-    <p style="color:var(--text-muted);max-width:480px;line-height:1.8;font-size:1rem">We give your most cherished pieces a second life. Bespoke reupholstery and custom cushion making by master artisans — guided by heritage techniques, elevated by modern precision.</p>
-    <div class="hero2-stats">
-      <div><div class="hero2-stat-num">4,800+</div><div class="hero2-stat-label">Pieces Restored</div></div>
-      <div><div class="hero2-stat-num">35yr</div><div class="hero2-stat-label">Heritage Craft</div></div>
-      <div><div class="hero2-stat-num">98%</div><div class="hero2-stat-label">Satisfaction Rate</div></div>
-    </div>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap">
-      <a href="contact.html" class="btn btn-primary btn-lg">Request Free Quote</a>
-      <a href="transformations.html" class="btn btn-outline btn-lg">View Our Work</a>
-    </div>
-  </div>
-  <div class="hero2-right">
-    <img src="assets/images/hero-sofa.jpg" alt="Masterfully reupholstered Chesterfield sofa">
-    <div class="hero2-float-card">
-      <div class="hero2-float-icon"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-      <div><div class="hero2-float-title">5-Year Guarantee</div><div class="hero2-float-sub">On all craftsmanship &amp; fabric</div></div>
-    </div>
-  </div>
-</div>
-
-<!-- SECTION 2: Bento Gallery Grid -->
-<section class="section" style="background:var(--bg-secondary)">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <div class="section-label">Portfolio</div>
-      <h2 class="section-title">A Glimpse of Our <span class="text-accent">Craftsmanship</span></h2>
-    </div>
-    <div class="bento-grid reveal-scale">
-      <div class="bento-cell bento-1" data-lightbox="assets/images/custom-sofa-teal.jpg" data-caption="Teal Velvet Chesterfield — Full Reupholstery">
-        <img src="assets/images/custom-sofa-teal.jpg" alt="Teal Chesterfield sofa">
-        <div class="bento-cell-overlay"></div>
-        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:600">Teal Velvet Chesterfield</div><div style="font-size:.8rem;opacity:.7">Full Reupholstery — £920</div></div>
-      </div>
-      <div class="bento-cell bento-2" data-lightbox="assets/images/velvet-armchair.jpg" data-caption="Sage Velvet Wing Chair Restoration">
-        <img src="assets/images/velvet-armchair.jpg" alt="Sage velvet armchair">
-        <div class="bento-cell-overlay"></div>
-        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Sage Wing Chair</div></div>
-      </div>
-      <div class="bento-cell bento-3" data-lightbox="assets/images/headboard-bedroom.jpg" data-caption="Button-Tufted Terracotta Headboard">
-        <img src="assets/images/headboard-bedroom.jpg" alt="Terracotta headboard">
-        <div class="bento-cell-overlay"></div>
-        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Tufted Headboard</div></div>
-      </div>
-      <div class="bento-cell bento-4" data-lightbox="assets/images/bench-restored.jpg" data-caption="Emerald Velvet Hallway Bench">
-        <img src="assets/images/bench-restored.jpg" alt="Restored velvet bench">
-        <div class="bento-cell-overlay"></div>
-        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Hallway Bench</div></div>
-      </div>
-      <div class="bento-cell bento-5" data-lightbox="assets/images/outdoor-cushions.jpg" data-caption="Custom Outdoor Cushion Set — Terracotta Sunbrella">
-        <img src="assets/images/outdoor-cushions.jpg" alt="Outdoor cushions">
-        <div class="bento-cell-overlay"></div>
-        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Outdoor Cushions</div></div>
-      </div>
-      <div class="bento-cell bento-6" data-lightbox="assets/images/fabric-detail.jpg" data-caption="Burgundy Velvet Close Detail">
-        <img src="assets/images/fabric-detail.jpg" alt="Fabric close detail">
-        <div class="bento-cell-overlay"></div>
-        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Fabric Detail</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 3: Horizontal Scroll Services -->
-<section class="section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
-        <div>
-          <div class="section-label">Our Services</div>
-          <h2 class="section-title">What We <span class="text-accent">Create</span></h2>
-        </div>
-        <div class="slider-meta">
-          <button class="slider-arrow" id="servicesPrev" aria-label="Previous services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
-          <span class="slider-counter"><span id="servicesCurrent">01</span> / <span id="servicesTotal">02</span></span>
-          <button class="slider-arrow" id="servicesNext" aria-label="Next services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
-          <a href="services.html" class="btn btn-outline">View All Services <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="services-slider-wrap reveal">
-      <div class="services-slider-viewport">
-        <div class="h-scroll" id="servicesSlider">
-          <div class="h-scroll-track" id="servicesTrack">
-        <div class="h-scroll-item"><img src="assets/images/hero-sofa.jpg" alt="Sofa reupholstery"><div class="h-scroll-caption"><div class="h-scroll-name">Sofa Reupholstery</div><div class="h-scroll-type">From £480</div></div></div>
-        <div class="h-scroll-item"><img src="assets/images/velvet-armchair.jpg" alt="Armchair restoration"><div class="h-scroll-caption"><div class="h-scroll-name">Armchair Restoration</div><div class="h-scroll-type">From £245</div></div></div>
-        <div class="h-scroll-item"><img src="assets/images/headboard-bedroom.jpg" alt="Headboard upholstery"><div class="h-scroll-caption"><div class="h-scroll-name">Headboard Upholstery</div><div class="h-scroll-type">From £185</div></div></div>
-        <div class="h-scroll-item"><img src="assets/images/outdoor-cushions.jpg" alt="Outdoor cushions"><div class="h-scroll-caption"><div class="h-scroll-name">Outdoor Cushions</div><div class="h-scroll-type">From £55</div></div></div>
-        <div class="h-scroll-item"><img src="assets/images/bench-restored.jpg" alt="Bench upholstery"><div class="h-scroll-caption"><div class="h-scroll-name">Bench &amp; Ottoman</div><div class="h-scroll-type">From £120</div></div></div>
-        <div class="h-scroll-item"><img src="assets/images/fabric-detail.jpg" alt="Custom cushions"><div class="h-scroll-caption"><div class="h-scroll-name">Custom Cushions</div><div class="h-scroll-type">From £35</div></div></div>
-          </div>
-        </div>
-      </div>
-      <div class="slider-dots" id="servicesDots" aria-hidden="true"></div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4: Stats + Story -->
-<section class="section" style="background:var(--bg-secondary)">
-  <div class="container">
-    <div class="story-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
-      <div class="reveal-left">
-        <div class="section-label">35 Years of Heritage</div>
-        <h2 class="section-title">Craft Runs<br><span class="text-accent">Deep in Our DNA</span></h2>
-        <p style="color:var(--text-muted);margin:1.25rem 0;line-height:1.8">Since Thomas Mercer opened the atelier in 1987, every piece that has passed through our doors has been treated with the same reverence, skill and passion. Three generations of one family — twelve master artisans — one unwavering standard.</p>
-        <p style="color:var(--text-muted);margin-bottom:2rem;line-height:1.8">We believe that truly excellent furniture is never really finished — it simply moves to its next chapter. Our role is to make that chapter extraordinary.</p>
-        <a href="about.html" class="btn btn-primary">Our Full Story</a>
-      </div>
-      <div class="reveal-right heritage-cards-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
-        <div class="heritage-card" style="background:var(--walnut);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
-          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><path d="M3 10a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4z"/><path d="M5 18v2M19 18v2"/></svg></div>
-          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700;color:var(--brass-light)" data-count="4800" data-suffix="+">4800+</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.55);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Pieces Restored</div>
-        </div>
-        <div class="heritage-card" style="background:var(--terracotta);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
-          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.6 13.4 7 22l5-3 5 3-1.6-8.6"/></svg></div>
-          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700">35</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Years of Craft</div>
-        </div>
-        <div class="heritage-card" style="background:var(--sage);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
-          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div>
-          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700">500+</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Fabric Options</div>
-        </div>
-        <div class="heritage-card" style="background:var(--brass);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
-          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/><polyline points="9 11.5 11 13.5 15 9.5"/></svg></div>
-          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700">98%</div>
-          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Client Satisfaction</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: Testimonial Carousel -->
-<section class="section">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <div class="section-label">Client Stories</div>
-      <h2 class="section-title">Trusted by <span class="text-accent">Discerning</span> Clients</h2>
-    </div>
-    <div class="grid grid-3">
-      <div class="testimonial-card reveal delay-1">
-        <div class="testimonial-quote">&ldquo;</div>
-        <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        <p class="testimonial-text">What Craftwork Atelier did to my Victorian parlour chairs defies description. The detailing is extraordinary — I now understand what true craftsmanship feels like.</p>
-        <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="George Alderton" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0">
-          <div><div class="testimonial-name">George Alderton</div><div class="testimonial-role">Art Director, Bloomsbury</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal delay-2">
-        <div class="testimonial-quote">&ldquo;</div>
-        <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        <p class="testimonial-text">Elena's eye for detail and fabric knowledge is simply unmatched. She guided us to a terracotta bouclé we would never have considered — and it's perfect. An absolute triumph.</p>
-        <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="Isabella Crane" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0">
-          <div><div class="testimonial-name">Isabella Crane</div><div class="testimonial-role">Interior Designer, Belgravia</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal delay-3">
-        <div class="testimonial-quote">&ldquo;</div>
-        <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-        <p class="testimonial-text">From the first email to the white-glove delivery — every step was handled with such care and professionalism. My Chesterfield now looks better than the day it was made.</p>
-        <div class="testimonial-author">
-          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="William Foster" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0">
-          <div><div class="testimonial-name">William Foster</div><div class="testimonial-role">Solicitor, Mayfair</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 6: Quote CTA Split -->
-<section class="section-sm">
-  <div class="container">
-    <div class="quote-cta reveal-scale">
-      <div class="quote-cta-inner">
-        <div class="quote-cta-left">
-          <div class="section-label">Quick Quote</div>
-          <h2 style="font-family:var(--font-serif);font-size:2.25rem;font-weight:700;margin:1rem 0">Tell Us About<br>Your <span class="text-accent">Project</span></h2>
-          <p style="color:var(--text-muted);line-height:1.75;margin-bottom:2rem">Fill in a few details and we'll come back with a ballpark estimate within 24 hours — completely free, no commitment required.</p>
-          <form data-validate style="display:flex;flex-direction:column;gap:1rem">
-            <div class="form-row">
-              <div class="form-group"><label class="form-label" for="q2-name">Name</label><input type="text" id="q2-name" class="form-control" placeholder="Your name" required><div class="form-error"></div></div>
-              <div class="form-group"><label class="form-label" for="q2-email">Email</label><input type="email" id="q2-email" class="form-control" placeholder="your@email.com" required><div class="form-error"></div></div>
-            </div>
-            <div class="form-group"><label class="form-label" for="q2-service">Service</label><select id="q2-service" class="form-control" required><option value="">Select service...</option><option>Sofa Reupholstery</option><option>Armchair Restoration</option><option>Headboard Upholstery</option><option>Outdoor Cushions</option><option>Custom Cushions</option><option>Bench / Ottoman</option></select><div class="form-error"></div></div>
-            <div class="form-group"><label class="form-label" for="q2-msg">Describe Your Piece</label><textarea id="q2-msg" class="form-control" placeholder="Style, size, condition, any specific requests..." required></textarea><div class="form-error"></div></div>
-            <button type="submit" class="btn btn-primary btn-lg">Send Quick Quote Request</button>
-          </form>
-        </div>
-        <div class="quote-cta-right">
-          <img class="quote-cta-right-bg" src="assets/images/about-team.jpg" alt="">
-          <div class="quote-cta-right-content">
-            <div style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-light);margin-bottom:1.5rem">Why Choose Us</div>
-            <div style="display:flex;flex-direction:column;gap:1.5rem">
-              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">Heritage Techniques</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">Traditional hand-tying and hand-tacking methods passed through generations</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">500+ Premium Fabrics</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">Curated from Europe's finest mills with free samples sent directly to you</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">5-Year Guarantee</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">Comprehensive craftsmanship warranty on every piece we restore</div></div></div>
-              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">Free Collection (M25)</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">We collect your piece and return it white-glove at zero extra cost</div></div></div>
-            </div>
-            <div style="margin-top:2rem;padding:1.25rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md)">
-              <div style="font-family:var(--font-serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.7">"We've been with Craftwork Atelier for three projects now. Every time they exceed what we thought was possible."</div>
-              <div style="margin-top:.75rem;font-size:.78rem;color:var(--brass-light);font-weight:600">— Oliver Chase, Interior Architect</div>
-            </div>
-            <div class="why-bottom-cta" style="margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.12)">
-              <div class="why-stats-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;text-align:center">
-                <div><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--brass-light)">24h</div><div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">Quick Response</div></div>
-                <div style="border-left:1px solid rgba(255,255,255,.12);border-right:1px solid rgba(255,255,255,.12)"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--brass-light)">4.9 ★</div><div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">Avg. Rating</div></div>
-                <div><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--brass-light)">Free</div><div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">M25 Collection</div></div>
-              </div>
-              <div class="why-phone-box" style="display:flex;gap:1rem;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:1.1rem 1.25rem;align-items:center;justify-content:space-between">
-                <div style="display:flex;gap:.85rem;align-items:center">
-                  <div style="width:44px;height:44px;border-radius:50%;background:var(--terracotta);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                  <div><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);font-weight:700">Prefer to talk?</div><a href="tel:+442079460123" style="color:#fff;font-weight:800;font-size:1.05rem">+44 (0)20 7946 0123</a></div>
-                </div>
-                <a href="contact.html" class="btn btn-brass btn-sm">Book Free Home Visit</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-top">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <div class="footer-brand-name">Craftwork Atelier</div>
-          <div class="footer-brand-tagline">Bespoke Upholstery &amp; Cushion Makers</div>
-          <p class="footer-desc">Restoring cherished furniture and creating bespoke cushions with master craftsmanship, premium fabrics, and genuine passion since 1987.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X (Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg></a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-          </div>
-        </div>
-        <div>
-          <h2 class="footer-col-title">Quick Links</h2>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index2.html">Home 2</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="fabric-gallery.html">Gallery</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2 class="footer-col-title">Contact Us</h2>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div class="footer-contact-text"><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">14 Heritage Lane, Notting Hill<br>London W11 2QA</a></div>
-          </div>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div class="footer-contact-text"><a href="tel:+442079460123">+44 (0)20 7946 0123</a><br><small>Mon&ndash;Fri 9am&ndash;6pm &middot; Sat 10am&ndash;4pm</small></div>
-          </div>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div class="footer-contact-text"><a href="mailto:hello@craftworkatelier.com">hello@craftworkatelier.com</a></div>
-          </div>
-        </div>
-        <div>
-          <h2 class="footer-col-title">Newsletter</h2>
-          <p class="footer-newsletter-desc">Fabric spotlights, care tips and exclusive offers &mdash; join 3,200+ subscribers.</p>
-          <form class="footer-newsletter-form">
-            <input type="email" name="email" class="footer-newsletter-input" placeholder="Your email address" aria-label="Email address" required>
-            <button type="submit" class="footer-newsletter-btn">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="footer-bottom">
-      <p class="footer-copyright">&copy; 2026 Craftwork Atelier. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <span class="footer-bottom-sep" aria-hidden="true">|</span>
-        <a href="terms-conditions.html">Terms &amp; Conditions</a>
-        <span class="footer-bottom-sep" aria-hidden="true">|</span>
-        <a href="sitemap.html">Sitemap</a>
-      </div>
-    </div>
-  </div>
-</footer>
-
-<div class="lightbox" id="lightbox"><div class="lightbox-inner"><button class="lightbox-close" aria-label="Close lightbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div></div>
-<div class="toast-container"></div>
-<button class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
-<script src="assets/js/main.js"></script>
-<script>
-(function () {
-  var track = document.getElementById('servicesTrack');
-  var prev = document.getElementById('servicesPrev');
-  var next = document.getElementById('servicesNext');
-  var curEl = document.getElementById('servicesCurrent');
-  var totalEl = document.getElementById('servicesTotal');
-  var dotsWrap = document.getElementById('servicesDots');
-  if (!track || !prev || !next) return;
-  var items = Array.prototype.slice.call(track.children);
-  var page = 0, perView = 3, totalPages = 2, gap = 20;
-  function compute() {
-    var w = window.innerWidth;
-    perView = w <= 640 ? 1 : (w <= 1100 ? 2 : 3);
-    try {
-      var cs = window.getComputedStyle(track);
-      var g = parseFloat((cs.columnGap || cs.gap || '20').toString().replace('px', ''));
-      if (!isNaN(g)) gap = g;
-    } catch (e) {}
-    totalPages = Math.max(1, Math.ceil(items.length / perView));
-    if (page > totalPages - 1) page = totalPages - 1;
-  }
-  function viewportWidth() {
-    var sliderBox = document.getElementById('servicesSlider');
-    if (sliderBox) return sliderBox.clientWidth;
-    return track.parentElement ? track.parentElement.clientWidth : 0;
-  }
-  function render() {
-    var step = viewportWidth() + gap;
-    var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
-    var x = page * step;
-    track.style.transform = isRTL ? ('translateX(' + x + 'px)') : ('translateX(-' + x + 'px)');
-    if (curEl) curEl.textContent = (page + 1 < 10 ? '0' + (page + 1) : '' + (page + 1));
-    if (totalEl) totalEl.textContent = (totalPages < 10 ? '0' + totalPages : '' + totalPages);
-    prev.disabled = page === 0;
-    next.disabled = page === totalPages - 1;
-    if (dotsWrap) {
-      dotsWrap.innerHTML = '';
-      for (var i = 0; i < totalPages; i++) {
-        (function (idx) {
-          var d = document.createElement('button');
-          d.className = 'slider-dot' + (idx === page ? ' active' : '');
-          d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
-          d.addEventListener('click', function () { page = idx; render(); });
-          dotsWrap.appendChild(d);
-        })(i);
-      }
-    }
-  }
-  prev.addEventListener('click', function () { if (page > 0) { page--; render(); } });
-  next.addEventListener('click', function () { if (page < totalPages - 1) { page++; render(); } });
-  // Touch swipe support
-  var startX = null;
-  var sliderBox = document.getElementById('servicesSlider');
-  if (sliderBox) {
-    sliderBox.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
-    sliderBox.addEventListener('touchend', function (e) {
-      if (startX === null) return;
-      var dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) {
-        if (dx < 0 && page < totalPages - 1) page++;
-        else if (dx > 0 && page > 0) page--;
-        render();
-      }
-      startX = null;
-    }, { passive: true });
-  }
-  window.addEventListener('resize', function () { compute(); render(); });
-  compute(); render();
-})();
-</script>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Craftwork Atelier — Bespoke Furniture Reupholstery &amp; Cushions | London</title>
+  <meta name="description" content="London's premier bespoke upholstery studio. Master-crafted sofa reupholstery, custom cushions and headboard upholstery. Free home collection within M25.">
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+  <meta name="theme-color" content="#4A3025">
+<link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* Alt hero - split screen */
+    .hero2 { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: var(--nav-h); }
+    .hero2-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem 5rem 5vw; }
+    .hero2-right { position: relative; }
+    .hero2-right img { width: 100%; height: 100%; object-fit: cover; }
+    .hero2-badge { display: inline-flex; align-items: center; align-self: flex-start; gap: .5rem; padding: .35rem 1rem .35rem .5rem; background: rgba(183,101,74,.08); border: 1px solid rgba(183,101,74,.25); border-radius: var(--radius-full); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 2rem; }
+    .hero2-badge-dot { width: 6px; height: 6px; background: var(--terracotta); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.3} }
+    .hero2-title { font-family: var(--font-serif); font-size: clamp(2.75rem, 5vw, 4.5rem); font-weight: 700; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero2-title em { color: var(--terracotta); font-style: normal; }
+    .hero2-stats { display: flex; gap: 2.5rem; margin: 2.5rem 0; flex-wrap: wrap; }
+    .hero2-stat-num { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; color: var(--terracotta); }
+    .hero2-stat-label { font-size: .78rem; color: var(--text-muted); }
+    .hero2-float-card { position: absolute; bottom: 2rem; left: -2.5rem; background: var(--bg-primary); border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 1rem 1.25rem; box-shadow: var(--shadow-xl); display: flex; align-items: center; gap: .875rem; z-index: 5; min-width: 220px; }
+    .hero2-float-icon { font-size: 1.5rem; }
+    .hero2-float-title { font-size: .88rem; font-weight: 700; }
+    .hero2-float-sub { font-size: .75rem; color: var(--text-muted); }
+    /* Bento Grid */
+    .bento-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 1.25rem; }
+    .bento-1 { grid-column: span 8; grid-row: span 2; }
+    .bento-2 { grid-column: span 4; }
+    .bento-3 { grid-column: span 4; }
+    .bento-4 { grid-column: span 4; }
+    .bento-5 { grid-column: span 4; }
+    .bento-6 { grid-column: span 4; }
+    .bento-cell { border-radius: var(--radius-lg); overflow: hidden; position: relative; }
+    .bento-cell img { width: 100%; height: 100%; object-fit: cover; min-height: 200px; transition: transform var(--transition-slow); }
+    .bento-cell:hover img { transform: scale(1.04); }
+    .bento-cell-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(41,37,34,0.7) 0%, transparent 50%); opacity: 0; transition: opacity var(--transition-fast); }
+    .bento-cell:hover .bento-cell-overlay { opacity: 1; }
+    .bento-cell-caption { position: absolute; bottom: 1rem; left: 1rem; color: white; opacity: 0; transition: opacity var(--transition-fast); }
+    .bento-cell:hover .bento-cell-caption { opacity: 1; }
+    /* Horizontal scroll gallery — converted to 3-per-view slider (no clipping) */
+    .services-slider-wrap { position: relative; }
+    .services-slider-viewport { overflow: hidden; border-radius: var(--radius-lg); padding: 0.5rem 0.25rem 1rem; margin: 0 -0.25rem; }
+    .h-scroll { overflow: hidden; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+    .h-scroll::-webkit-scrollbar { display: none; }
+    .h-scroll-track { display: flex; gap: 1.25rem; padding: 0.25rem 0.1rem 0.25rem; width: 100%; transition: transform 0.55s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+    .h-scroll-item { flex: 0 0 calc((100% - 2.5rem) / 3); width: calc((100% - 2.5rem) / 3); max-width: calc((100% - 2.5rem) / 3); border-radius: var(--radius-lg); overflow: hidden; position: relative; background: var(--bg-card); border: 1px solid var(--border-color); box-shadow: var(--shadow-sm); }
+    .h-scroll-item img { width: 100%; aspect-ratio: 3/3.4; object-fit: cover; display: block; }
+    .h-scroll-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.25rem; background: linear-gradient(to top, rgba(41,37,34,0.85) 0%, transparent 100%); color: white; }
+    .h-scroll-name { font-family: var(--font-serif); font-weight: 600; font-size: 1rem; }
+    .h-scroll-type { font-size: .78rem; opacity: .7; }
+    .slider-arrow { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--border-strong); background: var(--bg-card); color: var(--text-primary); display: inline-flex; align-items: center; justify-content: center; transition: all var(--transition-fast); flex-shrink: 0; }
+    .slider-arrow svg { width: 20px; height: 20px; display: block; }
+    .slider-arrow:hover:not(:disabled) { background: var(--terracotta); border-color: var(--terracotta); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(183,101,74,.35); }
+    .slider-arrow:disabled { opacity: .35; cursor: not-allowed; }
+    .slider-meta { display: flex; align-items: center; gap: 1rem; }
+    .slider-counter { font-size: .85rem; font-weight: 700; letter-spacing: .08em; color: var(--text-muted); min-width: 52px; text-align: center; }
+    .slider-dots { display: flex; gap: .5rem; justify-content: center; margin-top: 1.25rem; }
+    .slider-dot { width: 8px; height: 8px; border-radius: 9999px; background: var(--border-strong); border: none; padding: 0; cursor: pointer; transition: all var(--transition-fast); }
+    .slider-dot.active { width: 28px; background: var(--terracotta); }
+    /* Fix: Portfolio lightbox close button getting clipped */
+    .lightbox { padding: 5rem 1.5rem 2rem; overflow-y: auto; }
+    .lightbox-inner { overflow: visible; max-width: min(92vw, 1000px); width: auto; margin: auto; }
+    .lightbox-img { max-height: 76vh; box-shadow: var(--shadow-xl); }
+    .lightbox-close { top: -3.6rem; right: 0; width: 44px; height: 44px; background: var(--terracotta); border: 1px solid var(--terracotta); color: #fff; z-index: 5; box-shadow: 0 4px 16px rgba(0,0,0,.45); }
+    .lightbox-close:hover { background: var(--accent-hover); transform: scale(1.05); }
+    /* Heritage stat cards */
+    .heritage-card { transition: transform var(--transition-med), box-shadow var(--transition-med); }
+    .heritage-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+    .heritage-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.22); display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; }
+    .heritage-icon svg { width: 26px; height: 26px; display: block; }
+    /* Why Choose Us — fill bottom space */
+    .quote-cta-right-content { display: flex; flex-direction: column; height: 100%; }
+    .why-bottom-cta { margin-top: auto; }
+    /* Interactive Quote CTA */
+    .quote-cta { background: var(--bg-secondary); border-radius: var(--radius-xl); overflow: hidden; }
+    .quote-cta-inner { display: grid; grid-template-columns: 1fr 1fr; }
+    .quote-cta-left { padding: 4rem; }
+    .quote-cta-right { background: var(--walnut); padding: 4rem; position: relative; overflow: hidden; }
+    .quote-cta-right-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.15; }
+    .quote-cta-right-content { position: relative; z-index: 1; display: flex; flex-direction: column; height: 100%; }
+    .quote-cta-left .btn { justify-content: center; text-align: center; }
+    @media(max-width:1100px){
+      .hero2{grid-template-columns:1fr;min-height:auto}
+      .hero2-right{height:48vh;min-height:340px}
+      .hero2-left{padding:3rem 1.5rem}
+      .hero2-float-card{left:1rem;bottom:1rem}
+      .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 6}
+      .bento-1{grid-row:span 1}
+      .quote-cta-inner{grid-template-columns:1fr}
+      .h-scroll-item{flex-basis:calc((100% - 1.25rem)/2);width:calc((100% - 1.25rem)/2);max-width:calc((100% - 1.25rem)/2)}
+      .quote-cta-left,.quote-cta-right{padding:2.5rem 1.5rem}
+    }
+    @media(max-width:760px){
+      .slider-meta{width:100%;justify-content:space-between;flex-wrap:wrap;gap:0.75rem}
+      .slider-meta .btn{order:3;width:100%;justify-content:center}
+      .story-split-grid{grid-template-columns:1fr !important;gap:2.5rem !important}
+      .heritage-cards-grid{gap:1rem}
+      .quote-cta-left,.quote-cta-right{padding:2.25rem 1.5rem}
+    }
+    @media(max-width:640px){
+      .bento-1,.bento-2,.bento-3,.bento-4,.bento-5,.bento-6{grid-column:span 12}
+      .hero2-stats{gap:1.5rem}
+      .h-scroll-item{flex-basis:100%;width:100%;max-width:100%}
+      .slider-arrow{width:46px;height:46px}
+    }
+    @media(max-width:480px){
+      .hero2-right{height:36vh;min-height:240px}
+      .hero2-left{padding:2.25rem 1rem}
+      .hero2-title{font-size:clamp(1.85rem, 7.5vw, 2.4rem)}
+      .hero2-float-card{left:0.75rem;right:0.75rem;bottom:0.75rem;min-width:auto;padding:0.75rem 1rem}
+      .heritage-cards-grid{grid-template-columns:1fr 1fr !important;gap:0.75rem !important}
+      .heritage-card{padding:1.25rem 0.75rem !important;border-radius:var(--radius-lg) !important}
+      .heritage-card [data-count], .heritage-card div[style*="font-size:3rem"]{font-size:2rem !important}
+      .quote-cta-left,.quote-cta-right{padding:1.75rem 1rem}
+      .why-phone-box{flex-direction:column;align-items:stretch;text-align:center}
+      .why-phone-box .btn{width:100%;justify-content:center}
+    }
+    @media(max-width:360px){
+      .hero2-title{font-size:1.68rem}
+      .hero2-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+      .hero2-stat-num{font-size:1.6rem}
+      .hero2-right{min-height:220px}
+      .heritage-cards-grid{grid-template-columns:1fr !important}
+      .why-stats-grid{grid-template-columns:1fr !important;gap:0.75rem !important}
+      .why-stats-grid > div{border:none !important;padding:0.35rem 0}
+    }
+    @media(max-width:320px){
+      .hero2-left{padding:1.75rem 0.75rem}
+      .hero2-title{font-size:1.45rem}
+      .hero2-badge{font-size:0.65rem;padding:0.3rem 0.65rem}
+      .hero2-float-card{padding:0.65rem 0.75rem}
+      .hero2-float-title{font-size:0.8rem}
+      .hero2-float-sub{font-size:0.7rem}
+      .quote-cta-left,.quote-cta-right{padding:1.5rem 0.75rem}
+      .slider-arrow{width:38px;height:38px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container"><div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+        <img src="assets/images/logo.png" alt="Craftwork Atelier Logo" class="nav-logo-img">
+        <div class="nav-logo-text">
+          <span class="nav-logo-name">Craftwork Atelier</span>
+          <span class="nav-logo-tagline">Bespoke Upholstery &amp; Cushions</span>
+        </div>
+      </a>
+          <ul class="nav-links">
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="index2.html" class="nav-link active">Home 2</a></li>
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+        <li class="nav-item">
+          <a href="fabric-gallery.html" class="nav-link">Gallery <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></a>
+          <div class="nav-dropdown">
+            <a href="fabric-gallery.html">Fabric Gallery</a>
+            <a href="transformations.html">Transformations</a>
+          </div>
+        </li>
+        <li class="nav-item"><a href="pricing.html" class="nav-link">Pricing</a></li>
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+          <div class="nav-controls">
+        <button class="nav-toggle-btn" data-theme-toggle title="Toggle Dark Mode" aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+        <button class="nav-toggle-btn" data-rtl-toggle title="Toggle RTL">RTL</button>
+        <a href="login.html" class="btn btn-outline btn-sm">Login</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Get a Quote</a>
+        <button class="hamburger" aria-label="Open Menu"><span></span><span></span><span></span></button>
+      </div>
+  </div></div>
+</nav>
+<div class="mobile-overlay"></div>
+<nav class="mobile-nav">
+  <button class="mobile-nav-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  <div class="mobile-nav-links">
+    <a href="index.html">Home</a>
+    <a href="index2.html">Home 2</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="fabric-gallery.html">Fabric Gallery</a>
+    <a href="transformations.html">Transformations</a>
+    <a href="pricing.html">Pricing</a>
+    <a href="blog.html">Blog</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="mobile-nav-actions">
+    <a href="login.html" class="btn btn-outline">Login</a>
+    <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+  </div>
+</nav>
+
+<!-- SECTION 1: Split-Screen Hero -->
+<div class="hero2">
+  <div class="hero2-left">
+    <div class="hero2-badge"><span class="hero2-badge-dot"></span> London's Premier Upholstery Atelier</div>
+    <h1 class="hero2-title">Furniture Doesn't<br>Age — It <em>Evolves</em><br>With Craft</h1>
+    <p style="color:var(--text-muted);max-width:480px;line-height:1.8;font-size:1rem">We give your most cherished pieces a second life. Bespoke reupholstery and custom cushion making by master artisans — guided by heritage techniques, elevated by modern precision.</p>
+    <div class="hero2-stats">
+      <div><div class="hero2-stat-num">4,800+</div><div class="hero2-stat-label">Pieces Restored</div></div>
+      <div><div class="hero2-stat-num">35yr</div><div class="hero2-stat-label">Heritage Craft</div></div>
+      <div><div class="hero2-stat-num">98%</div><div class="hero2-stat-label">Satisfaction Rate</div></div>
+    </div>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-primary btn-lg">Request Free Quote</a>
+      <a href="transformations.html" class="btn btn-outline btn-lg">View Our Work</a>
+    </div>
+  </div>
+  <div class="hero2-right">
+    <img src="assets/images/hero-sofa.jpg" alt="Masterfully reupholstered Chesterfield sofa">
+    <div class="hero2-float-card">
+      <div class="hero2-float-icon"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div><div class="hero2-float-title">5-Year Guarantee</div><div class="hero2-float-sub">On all craftsmanship &amp; fabric</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: Bento Gallery Grid -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <div class="section-label">Portfolio</div>
+      <h2 class="section-title">A Glimpse of Our <span class="text-accent">Craftsmanship</span></h2>
+    </div>
+    <div class="bento-grid reveal-scale">
+      <div class="bento-cell bento-1" data-lightbox="assets/images/custom-sofa-teal.jpg" data-caption="Teal Velvet Chesterfield — Full Reupholstery">
+        <img src="assets/images/custom-sofa-teal.jpg" alt="Teal Chesterfield sofa">
+        <div class="bento-cell-overlay"></div>
+        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-size:1.1rem;font-weight:600">Teal Velvet Chesterfield</div><div style="font-size:.8rem;opacity:.7">Full Reupholstery — £920</div></div>
+      </div>
+      <div class="bento-cell bento-2" data-lightbox="assets/images/velvet-armchair.jpg" data-caption="Sage Velvet Wing Chair Restoration">
+        <img src="assets/images/velvet-armchair.jpg" alt="Sage velvet armchair">
+        <div class="bento-cell-overlay"></div>
+        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Sage Wing Chair</div></div>
+      </div>
+      <div class="bento-cell bento-3" data-lightbox="assets/images/headboard-bedroom.jpg" data-caption="Button-Tufted Terracotta Headboard">
+        <img src="assets/images/headboard-bedroom.jpg" alt="Terracotta headboard">
+        <div class="bento-cell-overlay"></div>
+        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Tufted Headboard</div></div>
+      </div>
+      <div class="bento-cell bento-4" data-lightbox="assets/images/bench-restored.jpg" data-caption="Emerald Velvet Hallway Bench">
+        <img src="assets/images/bench-restored.jpg" alt="Restored velvet bench">
+        <div class="bento-cell-overlay"></div>
+        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Hallway Bench</div></div>
+      </div>
+      <div class="bento-cell bento-5" data-lightbox="assets/images/outdoor-cushions.jpg" data-caption="Custom Outdoor Cushion Set — Terracotta Sunbrella">
+        <img src="assets/images/outdoor-cushions.jpg" alt="Outdoor cushions">
+        <div class="bento-cell-overlay"></div>
+        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Outdoor Cushions</div></div>
+      </div>
+      <div class="bento-cell bento-6" data-lightbox="assets/images/fabric-detail.jpg" data-caption="Burgundy Velvet Close Detail">
+        <img src="assets/images/fabric-detail.jpg" alt="Fabric close detail">
+        <div class="bento-cell-overlay"></div>
+        <div class="bento-cell-caption"><div style="font-family:var(--font-serif);font-weight:600">Fabric Detail</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3: Horizontal Scroll Services -->
+<section class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1.5rem">
+        <div>
+          <div class="section-label">Our Services</div>
+          <h2 class="section-title">What We <span class="text-accent">Create</span></h2>
+        </div>
+        <div class="slider-meta">
+          <button class="slider-arrow" id="servicesPrev" aria-label="Previous services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg></button>
+          <span class="slider-counter"><span id="servicesCurrent">01</span> / <span id="servicesTotal">02</span></span>
+          <button class="slider-arrow" id="servicesNext" aria-label="Next services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+          <a href="services.html" class="btn btn-outline">View All Services <svg class="btn-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="services-slider-wrap reveal">
+      <div class="services-slider-viewport">
+        <div class="h-scroll" id="servicesSlider">
+          <div class="h-scroll-track" id="servicesTrack">
+        <div class="h-scroll-item"><img src="assets/images/hero-sofa.jpg" alt="Sofa reupholstery"><div class="h-scroll-caption"><div class="h-scroll-name">Sofa Reupholstery</div><div class="h-scroll-type">From £480</div></div></div>
+        <div class="h-scroll-item"><img src="assets/images/velvet-armchair.jpg" alt="Armchair restoration"><div class="h-scroll-caption"><div class="h-scroll-name">Armchair Restoration</div><div class="h-scroll-type">From £245</div></div></div>
+        <div class="h-scroll-item"><img src="assets/images/headboard-bedroom.jpg" alt="Headboard upholstery"><div class="h-scroll-caption"><div class="h-scroll-name">Headboard Upholstery</div><div class="h-scroll-type">From £185</div></div></div>
+        <div class="h-scroll-item"><img src="assets/images/outdoor-cushions.jpg" alt="Outdoor cushions"><div class="h-scroll-caption"><div class="h-scroll-name">Outdoor Cushions</div><div class="h-scroll-type">From £55</div></div></div>
+        <div class="h-scroll-item"><img src="assets/images/bench-restored.jpg" alt="Bench upholstery"><div class="h-scroll-caption"><div class="h-scroll-name">Bench &amp; Ottoman</div><div class="h-scroll-type">From £120</div></div></div>
+        <div class="h-scroll-item"><img src="assets/images/fabric-detail.jpg" alt="Custom cushions"><div class="h-scroll-caption"><div class="h-scroll-name">Custom Cushions</div><div class="h-scroll-type">From £35</div></div></div>
+          </div>
+        </div>
+      </div>
+      <div class="slider-dots" id="servicesDots" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: Stats + Story -->
+<section class="section" style="background:var(--bg-secondary)">
+  <div class="container">
+    <div class="story-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center">
+      <div class="reveal-left">
+        <div class="section-label">35 Years of Heritage</div>
+        <h2 class="section-title">Craft Runs<br><span class="text-accent">Deep in Our DNA</span></h2>
+        <p style="color:var(--text-muted);margin:1.25rem 0;line-height:1.8">Since Thomas Mercer opened the atelier in 1987, every piece that has passed through our doors has been treated with the same reverence, skill and passion. Three generations of one family — twelve master artisans — one unwavering standard.</p>
+        <p style="color:var(--text-muted);margin-bottom:2rem;line-height:1.8">We believe that truly excellent furniture is never really finished — it simply moves to its next chapter. Our role is to make that chapter extraordinary.</p>
+        <a href="about.html" class="btn btn-primary">Our Full Story</a>
+      </div>
+      <div class="reveal-right heritage-cards-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:1.25rem">
+        <div class="heritage-card" style="background:var(--walnut);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
+          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 10V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v4"/><path d="M3 10a2 2 0 0 1 4 0v1h10v-1a2 2 0 0 1 4 0v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4z"/><path d="M5 18v2M19 18v2"/></svg></div>
+          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700;color:var(--brass-light)" data-count="4800" data-suffix="+">4800+</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.55);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Pieces Restored</div>
+        </div>
+        <div class="heritage-card" style="background:var(--terracotta);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
+          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.6 13.4 7 22l5-3 5 3-1.6-8.6"/></svg></div>
+          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700">35</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Years of Craft</div>
+        </div>
+        <div class="heritage-card" style="background:var(--sage);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
+          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div>
+          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700">500+</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Fabric Options</div>
+        </div>
+        <div class="heritage-card" style="background:var(--brass);border-radius:var(--radius-xl);padding:2rem;color:white;text-align:center">
+          <div class="heritage-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/><polyline points="9 11.5 11 13.5 15 9.5"/></svg></div>
+          <div style="font-family:var(--font-serif);font-size:3rem;font-weight:700">98%</div>
+          <div style="font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.4rem;letter-spacing:.08em;text-transform:uppercase">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: Testimonial Carousel -->
+<section class="section">
+  <div class="container">
+    <div class="section-header text-center reveal">
+      <div class="section-label">Client Stories</div>
+      <h2 class="section-title">Trusted by <span class="text-accent">Discerning</span> Clients</h2>
+    </div>
+    <div class="grid grid-3">
+      <div class="testimonial-card reveal delay-1">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">What Craftwork Atelier did to my Victorian parlour chairs defies description. The detailing is extraordinary — I now understand what true craftsmanship feels like.</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="George Alderton" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0">
+          <div><div class="testimonial-name">George Alderton</div><div class="testimonial-role">Art Director, Bloomsbury</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal delay-2">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">Elena's eye for detail and fabric knowledge is simply unmatched. She guided us to a terracotta bouclé we would never have considered — and it's perfect. An absolute triumph.</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="Isabella Crane" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0">
+          <div><div class="testimonial-name">Isabella Crane</div><div class="testimonial-role">Interior Designer, Belgravia</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal delay-3">
+        <div class="testimonial-quote">&ldquo;</div>
+        <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+        <p class="testimonial-text">From the first email to the white-glove delivery — every step was handled with such care and professionalism. My Chesterfield now looks better than the day it was made.</p>
+        <div class="testimonial-author">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="William Foster" loading="lazy" style="width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid var(--border-color);flex-shrink:0">
+          <div><div class="testimonial-name">William Foster</div><div class="testimonial-role">Solicitor, Mayfair</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: Quote CTA Split -->
+<section class="section-sm">
+  <div class="container">
+    <div class="quote-cta reveal-scale">
+      <div class="quote-cta-inner">
+        <div class="quote-cta-left">
+          <div class="section-label">Quick Quote</div>
+          <h2 style="font-family:var(--font-serif);font-size:2.25rem;font-weight:700;margin:1rem 0">Tell Us About<br>Your <span class="text-accent">Project</span></h2>
+          <p style="color:var(--text-muted);line-height:1.75;margin-bottom:2rem">Fill in a few details and we'll come back with a ballpark estimate within 24 hours — completely free, no commitment required.</p>
+          <form data-validate style="display:flex;flex-direction:column;gap:1rem">
+            <div class="form-row">
+              <div class="form-group"><label class="form-label" for="q2-name">Name</label><input type="text" id="q2-name" class="form-control" placeholder="Your name" required><div class="form-error"></div></div>
+              <div class="form-group"><label class="form-label" for="q2-email">Email</label><input type="email" id="q2-email" class="form-control" placeholder="your@email.com" required><div class="form-error"></div></div>
+            </div>
+            <div class="form-group"><label class="form-label" for="q2-service">Service</label><select id="q2-service" class="form-control" required><option value="">Select service...</option><option>Sofa Reupholstery</option><option>Armchair Restoration</option><option>Headboard Upholstery</option><option>Outdoor Cushions</option><option>Custom Cushions</option><option>Bench / Ottoman</option></select><div class="form-error"></div></div>
+            <div class="form-group"><label class="form-label" for="q2-msg">Describe Your Piece</label><textarea id="q2-msg" class="form-control" placeholder="Style, size, condition, any specific requests..." required></textarea><div class="form-error"></div></div>
+            <button type="submit" class="btn btn-primary btn-lg">Send Quick Quote Request</button>
+          </form>
+        </div>
+        <div class="quote-cta-right">
+          <img class="quote-cta-right-bg" src="assets/images/about-team.jpg" alt="">
+          <div class="quote-cta-right-content">
+            <div style="font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-light);margin-bottom:1.5rem">Why Choose Us</div>
+            <div style="display:flex;flex-direction:column;gap:1.5rem">
+              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">Heritage Techniques</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">Traditional hand-tying and hand-tacking methods passed through generations</div></div></div>
+              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">500+ Premium Fabrics</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">Curated from Europe's finest mills with free samples sent directly to you</div></div></div>
+              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">5-Year Guarantee</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">Comprehensive craftsmanship warranty on every piece we restore</div></div></div>
+              <div style="display:flex;align-items:flex-start;gap:1rem"><div style="width:40px;height:40px;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--brass-light)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div><div style="font-weight:700;color:white;margin-bottom:.25rem;font-size:.95rem">Free Collection (M25)</div><div style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.6">We collect your piece and return it white-glove at zero extra cost</div></div></div>
+            </div>
+            <div style="margin-top:2rem;padding:1.25rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md)">
+              <div style="font-family:var(--font-serif);font-size:1rem;font-style:italic;color:rgba(255,255,255,.75);line-height:1.7">"We've been with Craftwork Atelier for three projects now. Every time they exceed what we thought was possible."</div>
+              <div style="margin-top:.75rem;font-size:.78rem;color:var(--brass-light);font-weight:600">— Oliver Chase, Interior Architect</div>
+            </div>
+            <div class="why-bottom-cta" style="margin-top:2rem;padding-top:1.75rem;border-top:1px solid rgba(255,255,255,.12)">
+              <div class="why-stats-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-bottom:1.5rem;text-align:center">
+                <div><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--brass-light)">24h</div><div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">Quick Response</div></div>
+                <div style="border-left:1px solid rgba(255,255,255,.12);border-right:1px solid rgba(255,255,255,.12)"><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--brass-light)">4.9 ★</div><div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">Avg. Rating</div></div>
+                <div><div style="font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:var(--brass-light)">Free</div><div style="font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:.2rem">M25 Collection</div></div>
+              </div>
+              <div class="why-phone-box" style="display:flex;gap:1rem;flex-wrap:wrap;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);padding:1.1rem 1.25rem;align-items:center;justify-content:space-between">
+                <div style="display:flex;gap:.85rem;align-items:center">
+                  <div style="width:44px;height:44px;border-radius:50%;background:var(--terracotta);display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                  <div><div style="font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.55);font-weight:700">Prefer to talk?</div><a href="tel:+442079460123" style="color:#fff;font-weight:800;font-size:1.05rem">+44 (0)20 7946 0123</a></div>
+                </div>
+                <a href="contact.html" class="btn btn-brass btn-sm">Book Free Home Visit</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="index.html" class="footer-brand">
+            <img src="assets/images/logo.png" alt="Craftwork Atelier Logo" class="footer-logo-img">
+            <div class="footer-brand-text">
+              <div class="footer-brand-name">Craftwork Atelier</div>
+              <div class="footer-brand-tagline">Bespoke Upholstery &amp; Cushion Makers</div>
+            </div>
+          </a>
+          <p class="footer-desc">Restoring cherished furniture and creating bespoke cushions with master craftsmanship, premium fabrics, and genuine passion since 1987.</p>
+          <div class="footer-socials">
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X (Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer-col-title">Quick Links</h2>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index2.html">Home 2</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="fabric-gallery.html">Gallery</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2 class="footer-col-title">Contact Us</h2>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div class="footer-contact-text"><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">14 Heritage Lane, Notting Hill<br>London W11 2QA</a></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div class="footer-contact-text"><a href="tel:+442079460123">+44 (0)20 7946 0123</a><br><small>Mon&ndash;Fri 9am&ndash;6pm &middot; Sat 10am&ndash;4pm</small></div>
+          </div>
+          <div class="footer-contact-item">
+            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div class="footer-contact-text"><a href="mailto:hello@craftworkatelier.com">hello@craftworkatelier.com</a></div>
+          </div>
+        </div>
+        <div>
+          <h2 class="footer-col-title">Newsletter</h2>
+          <p class="footer-newsletter-desc">Fabric spotlights, care tips and exclusive offers &mdash; join 3,200+ subscribers.</p>
+          <form class="footer-newsletter-form">
+            <input type="email" name="email" class="footer-newsletter-input" placeholder="Your email address" aria-label="Email address" required>
+            <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; 2026 Craftwork Atelier. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="privacy-policy.html">Privacy Policy</a>
+        <span class="footer-bottom-sep" aria-hidden="true">|</span>
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+        <span class="footer-bottom-sep" aria-hidden="true">|</span>
+        <a href="sitemap.html">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox"><div class="lightbox-inner"><button class="lightbox-close" aria-label="Close lightbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div></div>
+<div class="toast-container"></div>
+<button class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+<script src="assets/js/main.js"></script>
+<script>
+(function () {
+  var track = document.getElementById('servicesTrack');
+  var prev = document.getElementById('servicesPrev');
+  var next = document.getElementById('servicesNext');
+  var curEl = document.getElementById('servicesCurrent');
+  var totalEl = document.getElementById('servicesTotal');
+  var dotsWrap = document.getElementById('servicesDots');
+  if (!track || !prev || !next) return;
+  var items = Array.prototype.slice.call(track.children);
+  var page = 0, perView = 3, totalPages = 2, gap = 20;
+  function compute() {
+    var w = window.innerWidth;
+    perView = w <= 640 ? 1 : (w <= 1100 ? 2 : 3);
+    try {
+      var cs = window.getComputedStyle(track);
+      var g = parseFloat((cs.columnGap || cs.gap || '20').toString().replace('px', ''));
+      if (!isNaN(g)) gap = g;
+    } catch (e) {}
+    totalPages = Math.max(1, Math.ceil(items.length / perView));
+    if (page > totalPages - 1) page = totalPages - 1;
+  }
+  function viewportWidth() {
+    var sliderBox = document.getElementById('servicesSlider');
+    if (sliderBox) return sliderBox.clientWidth;
+    return track.parentElement ? track.parentElement.clientWidth : 0;
+  }
+  function render() {
+    var step = viewportWidth() + gap;
+    var isRTL = document.documentElement.getAttribute('dir') === 'rtl';
+    var x = page * step;
+    track.style.transform = isRTL ? ('translateX(' + x + 'px)') : ('translateX(-' + x + 'px)');
+    if (curEl) curEl.textContent = (page + 1 < 10 ? '0' + (page + 1) : '' + (page + 1));
+    if (totalEl) totalEl.textContent = (totalPages < 10 ? '0' + totalPages : '' + totalPages);
+    prev.disabled = page === 0;
+    next.disabled = page === totalPages - 1;
+    if (dotsWrap) {
+      dotsWrap.innerHTML = '';
+      for (var i = 0; i < totalPages; i++) {
+        (function (idx) {
+          var d = document.createElement('button');
+          d.className = 'slider-dot' + (idx === page ? ' active' : '');
+          d.setAttribute('aria-label', 'Go to slide ' + (idx + 1));
+          d.addEventListener('click', function () { page = idx; render(); });
+          dotsWrap.appendChild(d);
+        })(i);
+      }
+    }
+  }
+  prev.addEventListener('click', function () { if (page > 0) { page--; render(); } });
+  next.addEventListener('click', function () { if (page < totalPages - 1) { page++; render(); } });
+  // Touch swipe support
+  var startX = null;
+  var sliderBox = document.getElementById('servicesSlider');
+  if (sliderBox) {
+    sliderBox.addEventListener('touchstart', function (e) { startX = e.touches[0].clientX; }, { passive: true });
+    sliderBox.addEventListener('touchend', function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) {
+        if (dx < 0 && page < totalPages - 1) page++;
+        else if (dx > 0 && page > 0) page--;
+        render();
+      }
+      startX = null;
+    }, { passive: true });
+  }
+  window.addEventListener('resize', function () { compute(); render(); });
+  compute(); render();
+})();
+</script>
+</body>
+</html>
