@@ -1,115 +1,229 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Coming Soon — Craftwork Atelier | Something Beautiful is Being Made</title>
-<meta name="description" content="We're crafting something special. Craftwork Atelier's new online experience is coming soon. Sign up to be notified when we launch.">
-  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-  <meta name="theme-color" content="#4A3025">
-<link rel="stylesheet" href="assets/css/main.css">
-<style>
-.cs-page{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:4rem 1.5rem;text-align:center;background:var(--charcoal)}
-.cs-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.cs-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,48,37,0.92) 0%,rgba(41,37,34,0.88) 100%)}
-.cs-content{position:relative;z-index:1;max-width:680px;color:white}
-.cs-logo{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:white;margin-bottom:3rem;display:block}
-.cs-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1.25rem;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-full);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-light);margin-bottom:1.75rem}
-.cs-title{font-family:var(--font-serif);font-size:clamp(2.5rem,7vw,5rem);font-weight:700;color:white;line-height:1.1;margin-bottom:1.5rem}
-.cs-desc{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto}
-.countdown-grid{display:flex;gap:1.5rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap}
-.cd-unit{min-width:90px;padding:1.25rem 1.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);backdrop-filter:blur(8px)}
-.cd-num{font-family:var(--font-serif);font-size:2.75rem;font-weight:700;color:white;line-height:1;display:block}
-.cd-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.4rem;display:block}
-.cs-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto 2.5rem;flex-wrap:wrap}
-.cs-form input{flex:1;padding:.875rem 1.25rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:white;font-family:var(--font-sans);font-size:.9rem;outline:none;min-width:200px}
-.cs-form input::placeholder{color:rgba(255,255,255,.4)}
-.cs-form input:focus{border-color:var(--terracotta)}
-.cs-socials{display:flex;gap:1rem;justify-content:center}
-.cs-social{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.85rem;font-weight:700;transition:all .25s}
-.cs-social:hover{background:var(--terracotta);border-color:var(--terracotta);color:white}
-.cs-progress{width:100%;max-width:400px;margin:0 auto 2.5rem;background:rgba(255,255,255,.1);border-radius:var(--radius-full);overflow:hidden;height:4px}
-.cs-progress-bar{height:100%;background:linear-gradient(90deg,var(--terracotta),var(--brass));border-radius:var(--radius-full);width:72%}
-@media(max-width:480px){
-  .cs-page{padding:3rem 1rem}
-  .cs-title{font-size:2.25rem;margin-bottom:1rem}
-  .cs-desc{margin-bottom:2rem}
-  .countdown-grid{gap:0.75rem;margin-bottom:2rem}
-  .cd-unit{min-width:68px;padding:0.85rem 0.75rem}
-  .cd-num{font-size:2rem}
-  .cs-form{flex-direction:column;max-width:100%}
-  .cs-form input{min-width:100%;text-align:center}
-  .cs-form button{width:100%}
-}
-@media(max-width:360px){
-  .cd-unit{min-width:60px;padding:0.75rem 0.5rem}
-  .cd-num{font-size:1.75rem}
-  .cs-logo{margin-bottom:2rem}
-}
-@media(max-width:320px){
-  .cs-page{padding:2.25rem 0.75rem}
-  .countdown-grid{gap:0.5rem}
-  .cd-unit{min-width:56px;padding:0.65rem 0.4rem}
-  .cd-num{font-size:1.5rem}
-  .cd-label{font-size:0.65rem}
-}
-</style>
-</head>
-<body>
-<div class="cs-page">
-  <div class="cs-overlay"></div>
-  <div class="cs-content">
-    <a href="index.html" class="cs-logo">Craftwork Atelier</a>
-    <div class="cs-badge"><svg class="sparkle-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg> Something Beautiful Is Being Made</div>
-    <h1 class="cs-title">Our New Online<br>Experience is <em>Coming</em></h1>
-    <p class="cs-desc">We are crafting a completely new digital atelier experience for our clients — with live order tracking, a virtual fabric studio and more. Be the first to know when we launch.</p>
-    
-    <div style="margin-bottom:.75rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Launching in</div>
-    <div class="countdown-grid">
-      <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
-      <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
-    </div>
-
-    <div style="margin-bottom:.75rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Progress: 72% Complete</div>
-    <div class="cs-progress"><div class="cs-progress-bar"></div></div>
-    
-    <p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:1rem">Join 840 people on the early access list</p>
-    <form class="cs-form" data-validate>
-      <input type="email" placeholder="Your email address" required>
-      <button type="submit" class="btn btn-terracotta" style="border-radius:var(--radius-full);padding:.875rem 1.75rem;background:var(--terracotta);color:white;border:none;font-weight:600;cursor:pointer;white-space:nowrap">Notify Me</button>
-    </form>
-    
-    <div style="font-size:.82rem;color:rgba(255,255,255,.3);margin-bottom:2rem">No spam, ever. Unsubscribe any time.</div>
-    <div style="font-size:.8rem;color:rgba(255,255,255,.35);margin-bottom:1.25rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Follow the journey</div>
-    <div class="cs-socials">
-      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="cs-social" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer" class="cs-social" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
-      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="cs-social" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-    </div>
-    <div style="margin-top:2.5rem"><a href="index.html" style="font-size:.85rem;color:rgba(255,255,255,.4)">Visit current site &rarr;</a></div>
-    <div style="margin-top:1.25rem;font-size:.78rem;color:rgba(255,255,255,.35)"><a href="privacy-policy.html" style="color:inherit">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms-conditions.html" style="color:inherit">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="sitemap.html" style="color:inherit">Sitemap</a></div>
-  </div>
-</div>
-
-<div class="toast-container"></div>
-<script>
-(function(){
-  var target=new Date();target.setDate(target.getDate()+47);
-  function upd(){
-    var n=new Date(),d=Math.floor((target-n)/1e3);
-    if(d<0)d=0;
-    document.getElementById('cd-days').textContent=String(Math.floor(d/86400)).padStart(2,'0');
-    document.getElementById('cd-hours').textContent=String(Math.floor((d%86400)/3600)).padStart(2,'0');
-    document.getElementById('cd-mins').textContent=String(Math.floor((d%3600)/60)).padStart(2,'0');
-    document.getElementById('cd-secs').textContent=String(d%60).padStart(2,'0');
-  }upd();setInterval(upd,1000);
-})();
-</script>
-<script src="assets/js/main.js"></script>
-</body>
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Coming Soon — Craftwork Atelier | Something Beautiful is Being Made</title>
+
+<meta name="description" content="We're crafting something special. Craftwork Atelier's new online experience is coming soon. Sign up to be notified when we launch.">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+  <meta name="theme-color" content="#4A3025">
+
+<link rel="stylesheet" href="assets/css/main.css?v=2">
+
+<style>
+
+.cs-page{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:4rem 1.5rem;text-align:center;background:var(--charcoal)}
+
+.cs-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.cs-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(74,48,37,0.92) 0%,rgba(41,37,34,0.88) 100%)}
+
+.cs-content{position:relative;z-index:1;max-width:680px;color:white}
+
+.cs-logo{font-family:var(--font-serif);font-size:1.5rem;font-weight:700;color:white;margin-bottom:3rem;display:block}
+
+.cs-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1.25rem;background:rgba(176,138,87,.15);border:1px solid rgba(176,138,87,.3);border-radius:var(--radius-full);font-size:.75rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass-light);margin-bottom:1.75rem}
+
+.cs-title{font-family:var(--font-serif);font-size:clamp(2.5rem,7vw,5rem);font-weight:700;color:white;line-height:1.1;margin-bottom:1.5rem}
+
+.cs-desc{font-size:1rem;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:3rem;max-width:500px;margin-left:auto;margin-right:auto}
+
+.countdown-grid{display:flex;gap:1.5rem;justify-content:center;margin-bottom:3rem;flex-wrap:wrap}
+
+.cd-unit{min-width:90px;padding:1.25rem 1.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius-md);backdrop-filter:blur(8px)}
+
+.cd-num{font-family:var(--font-serif);font-size:2.75rem;font-weight:700;color:white;line-height:1;display:block}
+
+.cd-label{font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.4rem;display:block}
+
+.cs-form{display:flex;gap:.75rem;max-width:440px;margin:0 auto 2.5rem;flex-wrap:wrap}
+
+.cs-form input{flex:1;padding:.875rem 1.25rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:var(--radius-full);color:white;font-family:var(--font-sans);font-size:.9rem;outline:none;min-width:200px}
+
+.cs-form input::placeholder{color:rgba(255,255,255,.4)}
+
+.cs-form input:focus{border-color:var(--terracotta)}
+
+.cs-socials{display:flex;gap:1rem;justify-content:center}
+
+.cs-social{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);font-size:.85rem;font-weight:700;transition:all .25s}
+
+.cs-social:hover{background:var(--terracotta);border-color:var(--terracotta);color:white}
+
+.cs-progress{width:100%;max-width:400px;margin:0 auto 2.5rem;background:rgba(255,255,255,.1);border-radius:var(--radius-full);overflow:hidden;height:4px}
+
+.cs-progress-bar{height:100%;background:linear-gradient(90deg,var(--terracotta),var(--brass));border-radius:var(--radius-full);width:72%}
+
+@media(max-width:480px){
+
+  .cs-page{padding:3rem 1rem}
+
+  .cs-title{font-size:2.25rem;margin-bottom:1rem}
+
+  .cs-desc{margin-bottom:2rem}
+
+  .countdown-grid{gap:0.75rem;margin-bottom:2rem}
+
+  .cd-unit{min-width:68px;padding:0.85rem 0.75rem}
+
+  .cd-num{font-size:2rem}
+
+  .cs-form{flex-direction:column;max-width:100%}
+
+  .cs-form input{min-width:100%;text-align:center}
+
+  .cs-form button{width:100%}
+
+}
+
+@media(max-width:360px){
+
+  .cd-unit{min-width:60px;padding:0.75rem 0.5rem}
+
+  .cd-num{font-size:1.75rem}
+
+  .cs-logo{margin-bottom:2rem}
+
+}
+
+@media(max-width:320px){
+
+  .cs-page{padding:2.25rem 0.75rem}
+
+  .countdown-grid{gap:0.5rem}
+
+  .cd-unit{min-width:56px;padding:0.65rem 0.4rem}
+
+  .cd-num{font-size:1.5rem}
+
+  .cd-label{font-size:0.65rem}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="cs-page">
+
+  <div class="cs-overlay"></div>
+
+  <div class="cs-content">
+
+    <a href="index.html" class="cs-logo">Craftwork Atelier</a>
+
+    <div class="cs-badge"><svg class="sparkle-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0L14.6 9.4L24 12L14.6 14.6L12 24L9.4 14.6L0 12L9.4 9.4L12 0Z"/></svg> Something Beautiful Is Being Made</div>
+
+    <h1 class="cs-title">Our New Online<br>Experience is <em>Coming</em></h1>
+
+    <p class="cs-desc">We are crafting a completely new digital atelier experience for our clients — with live order tracking, a virtual fabric studio and more. Be the first to know when we launch.</p>
+
+    
+
+    <div style="margin-bottom:.75rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Launching in</div>
+
+    <div class="countdown-grid">
+
+      <div class="cd-unit"><span class="cd-num" id="cd-days">00</span><span class="cd-label">Days</span></div>
+
+      <div class="cd-unit"><span class="cd-num" id="cd-hours">00</span><span class="cd-label">Hours</span></div>
+
+      <div class="cd-unit"><span class="cd-num" id="cd-mins">00</span><span class="cd-label">Minutes</span></div>
+
+      <div class="cd-unit"><span class="cd-num" id="cd-secs">00</span><span class="cd-label">Seconds</span></div>
+
+    </div>
+
+
+
+    <div style="margin-bottom:.75rem;font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4)">Progress: 72% Complete</div>
+
+    <div class="cs-progress"><div class="cs-progress-bar"></div></div>
+
+    
+
+    <p style="font-size:.88rem;color:rgba(255,255,255,.5);margin-bottom:1rem">Join 840 people on the early access list</p>
+
+    <form class="cs-form" data-validate>
+
+      <input type="email" placeholder="Your email address" required>
+
+      <button type="submit" class="btn btn-terracotta" style="border-radius:var(--radius-full);padding:.875rem 1.75rem;background:var(--terracotta);color:white;border:none;font-weight:600;cursor:pointer;white-space:nowrap">Notify Me</button>
+
+    </form>
+
+    
+
+    <div style="font-size:.82rem;color:rgba(255,255,255,.3);margin-bottom:2rem">No spam, ever. Unsubscribe any time.</div>
+
+    <div style="font-size:.8rem;color:rgba(255,255,255,.35);margin-bottom:1.25rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Follow the journey</div>
+
+    <div class="cs-socials">
+
+      <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="cs-social" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+
+      <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer" class="cs-social" aria-label="Pinterest"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.372 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg></a>
+
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="cs-social" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+
+    </div>
+
+    <div style="margin-top:2.5rem"><a href="index.html" style="font-size:.85rem;color:rgba(255,255,255,.4)">Visit current site &rarr;</a></div>
+
+    <div style="margin-top:1.25rem;font-size:.78rem;color:rgba(255,255,255,.35)"><a href="privacy-policy.html" style="color:inherit">Privacy Policy</a> &nbsp;·&nbsp; <a href="terms-conditions.html" style="color:inherit">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="sitemap.html" style="color:inherit">Sitemap</a></div>
+
+  </div>
+
+</div>
+
+
+
+<div class="toast-container"></div>
+
+<script>
+
+(function(){
+
+  var target=new Date();target.setDate(target.getDate()+47);
+
+  function upd(){
+
+    var n=new Date(),d=Math.floor((target-n)/1e3);
+
+    if(d<0)d=0;
+
+    document.getElementById('cd-days').textContent=String(Math.floor(d/86400)).padStart(2,'0');
+
+    document.getElementById('cd-hours').textContent=String(Math.floor((d%86400)/3600)).padStart(2,'0');
+
+    document.getElementById('cd-mins').textContent=String(Math.floor((d%3600)/60)).padStart(2,'0');
+
+    document.getElementById('cd-secs').textContent=String(d%60).padStart(2,'0');
+
+  }upd();setInterval(upd,1000);
+
+})();
+
+</script>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+
 </html>

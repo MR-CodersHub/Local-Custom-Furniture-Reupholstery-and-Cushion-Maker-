@@ -1,391 +1,780 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pricing — Craftwork Atelier | Transparent Upholstery Pricing</title>
-  <meta name="description" content="Clear, transparent pricing for all upholstery and cushion services. No hidden fees. Request a personalised quote for your specific piece.">
-    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-  <meta name="theme-color" content="#4A3025">
-<link rel="stylesheet" href="assets/css/main.css">
-  <style>
-    .compare-table { width: 100%; min-width: 580px; border-collapse: collapse; margin-top: 0; }
-    .compare-table th { background: var(--walnut); color: white; padding: 1rem 1.25rem; font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
-    .compare-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
-    .compare-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
-    .compare-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
-    .compare-table tr:last-child td { border-bottom: none; }
-    .compare-table tr:nth-child(even) td { background: var(--bg-secondary); }
-    .compare-table .check { color: var(--sage); font-size: 1rem; }
-    .compare-table .cross { color: #E05252; font-size: 1rem; }
-    .price-range { font-family: var(--font-serif); font-weight: 700; color: var(--terracotta); }
-    .pricing-card { display: flex; flex-direction: column; box-sizing: border-box; }
-    .pricing-card .pricing-desc { min-height: 4.4em; }
-    .pricing-card .pricing-features { flex: 1; }
-    .pricing-card .btn { margin-top: auto; }
-    .table-wrap { border: 1px solid var(--border-strong); border-radius: var(--radius-lg); overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--bg-card); max-width: 100%; box-sizing: border-box; }
-    .compare-table th + th, .compare-table td + td { border-left: 1px solid var(--border-color); }
-    .compare-table thead th { border-bottom: 2px solid var(--brass); }
-    .include-card { background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; height: 100%; box-sizing: border-box; }
-    .include-icon { width: 54px; height: 54px; border-radius: 14px; background: rgba(183,101,74,.1); border: 1px solid rgba(183,101,74,.2); display: flex; align-items: center; justify-content: center; color: var(--terracotta); margin: 0 auto 1rem; flex-shrink: 0; line-height: 0; }
-    .include-icon svg { width: 26px; height: 26px; display: block; margin: auto; flex-shrink: 0; }
-    .pay-grid .pricing-method-icon { margin: 0 0 1.25rem; }
-    .guarantee-strip { background: var(--terracotta); padding: 2rem 0; }
-    .guarantee-inner { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; color: white; text-align: center; }
-    .guar-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
-    .guar-icon { font-size: 1.75rem; }
-    .guar-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
-    .estimate-split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-
-    @media (max-width: 1024px) {
-      .estimate-split-grid { gap: 2.5rem; }
-    }
-    @media (max-width: 760px) {
-      .estimate-split-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
-      .pricing-card .pricing-desc { min-height: unset; }
-    }
-    @media (max-width: 480px) {
-      .pricing-card { padding: 1.75rem 1.25rem; }
-      .include-card { padding: 1.5rem 1rem; }
-      .guarantee-inner { gap: 1.5rem; }
-    }
-    @media (max-width: 360px) {
-      .pricing-card { padding: 1.5rem 1rem; }
-      .include-card { padding: 1.25rem 0.85rem; }
-    }
-    @media (max-width: 320px) {
-      .pricing-card { padding: 1.25rem 0.75rem; }
-      .include-card { padding: 1rem 0.65rem; }
-    }
-  </style>
-</head>
-<body>
-<nav class="navbar transparent-nav scrolled" id="navbar">
-  <div class="container"><div class="nav-inner">
-    <a href="index.html" class="nav-logo">
-        <img src="assets/images/logo.png" alt="Craftwork Atelier Logo" class="nav-logo-img">
-        <div class="nav-logo-text">
-          <span class="nav-logo-name">Craftwork Atelier</span>
-          <span class="nav-logo-tagline">Bespoke Upholstery &amp; Cushions</span>
-        </div>
-      </a>
-          <ul class="nav-links">
-        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="index2.html" class="nav-link">Home 2</a></li>
-        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
-        <li class="nav-item">
-          <a href="fabric-gallery.html" class="nav-link">Gallery <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></a>
-          <div class="nav-dropdown">
-            <a href="fabric-gallery.html">Fabric Gallery</a>
-            <a href="transformations.html">Transformations</a>
-          </div>
-        </li>
-        <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
-        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-      </ul>
-          <div class="nav-controls">
-        <button class="nav-toggle-btn" data-theme-toggle title="Toggle Dark Mode" aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
-        <button class="nav-toggle-btn" data-rtl-toggle title="Toggle RTL">RTL</button>
-        <a href="contact.html" class="btn btn-primary btn-sm">Get a Quote</a>
-        <button class="hamburger" aria-label="Open Menu"><span></span><span></span><span></span></button>
-      </div>
-  </div></div>
-</nav>
-<div class="mobile-overlay"></div>
-<nav class="mobile-nav">
-  <button class="mobile-nav-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
-  <div class="mobile-nav-links">
-    <a href="index.html">Home</a>
-    <a href="index2.html">Home 2</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="fabric-gallery.html">Fabric Gallery</a>
-    <a href="transformations.html">Transformations</a>
-    <a href="pricing.html">Pricing</a>
-    <a href="blog.html">Blog</a>
-    <a href="contact.html">Contact</a>
-  </div>
-  <div class="mobile-nav-actions">
-    <a href="contact.html" class="btn btn-primary">Get a Quote</a>
-  </div>
-</nav>
-
-<div class="page-hero">
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Pricing — Craftwork Atelier | Transparent Upholstery Pricing</title>
+
+  <meta name="description" content="Clear, transparent pricing for all upholstery and cushion services. No hidden fees. Request a personalised quote for your specific piece.">
+
+    <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+  <meta name="theme-color" content="#4A3025">
+
+<link rel="stylesheet" href="assets/css/main.css?v=2">
+
+  <style>
+
+    .compare-table { width: 100%; min-width: 580px; border-collapse: collapse; margin-top: 0; }
+
+    .compare-table th { background: var(--walnut); color: white; padding: 1rem 1.25rem; font-family: var(--font-sans); font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; text-align: left; }
+
+    .compare-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+
+    .compare-table th:last-child { border-radius: 0 var(--radius-sm) 0 0; }
+
+    .compare-table td { padding: 0.9rem 1.25rem; border-bottom: 1px solid var(--border-color); font-size: 0.9rem; }
+
+    .compare-table tr:last-child td { border-bottom: none; }
+
+    .compare-table tr:nth-child(even) td { background: var(--bg-secondary); }
+
+    .compare-table .check { color: var(--sage); font-size: 1rem; }
+
+    .compare-table .cross { color: #E05252; font-size: 1rem; }
+
+    .price-range { font-family: var(--font-serif); font-weight: 700; color: var(--terracotta); }
+
+    .pricing-card { display: flex; flex-direction: column; box-sizing: border-box; }
+
+    .pricing-card .pricing-desc { min-height: 4.4em; }
+
+    .pricing-card .pricing-features { flex: 1; }
+
+    .pricing-card .btn { margin-top: auto; }
+
+    .table-wrap { border: 1px solid var(--border-strong); border-radius: var(--radius-lg); overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--bg-card); max-width: 100%; box-sizing: border-box; }
+
+    .compare-table th + th, .compare-table td + td { border-left: 1px solid var(--border-color); }
+
+    .compare-table thead th { border-bottom: 2px solid var(--brass); }
+
+    .include-card { background: var(--bg-card); border: 1px solid var(--border-strong); border-radius: var(--radius-lg); padding: 2rem 1.5rem; text-align: center; height: 100%; box-sizing: border-box; }
+
+    .include-icon { width: 54px; height: 54px; border-radius: 14px; background: rgba(183,101,74,.1); border: 1px solid rgba(183,101,74,.2); display: flex; align-items: center; justify-content: center; color: var(--terracotta); margin: 0 auto 1rem; flex-shrink: 0; line-height: 0; }
+
+    .include-icon svg { width: 26px; height: 26px; display: block; margin: auto; flex-shrink: 0; }
+
+    .pay-grid .pricing-method-icon { margin: 0 0 1.25rem; }
+
+    .guarantee-strip { background: var(--terracotta); padding: 2rem 0; }
+
+    .guarantee-inner { display: flex; align-items: center; justify-content: center; gap: 3rem; flex-wrap: wrap; color: white; text-align: center; }
+
+    .guar-item { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; }
+
+    .guar-icon { font-size: 1.75rem; }
+
+    .guar-label { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; opacity: 0.85; }
+
+    .estimate-split-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+
+
+
+    @media (max-width: 1024px) {
+
+      .estimate-split-grid { gap: 2.5rem; }
+
+    }
+
+    @media (max-width: 760px) {
+
+      .estimate-split-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+
+      .pricing-card .pricing-desc { min-height: unset; }
+
+    }
+
+    @media (max-width: 480px) {
+
+      .pricing-card { padding: 1.75rem 1.25rem; }
+
+      .include-card { padding: 1.5rem 1rem; }
+
+      .guarantee-inner { gap: 1.5rem; }
+
+    }
+
+    @media (max-width: 360px) {
+
+      .pricing-card { padding: 1.5rem 1rem; }
+
+      .include-card { padding: 1.25rem 0.85rem; }
+
+    }
+
+    @media (max-width: 320px) {
+
+      .pricing-card { padding: 1.25rem 0.75rem; }
+
+      .include-card { padding: 1rem 0.65rem; }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+<nav class="navbar transparent-nav scrolled" id="navbar">
+
+  <div class="container"><div class="nav-inner">
+
+    <a href="index.html" class="nav-logo">
+
+        <img src="assets/images/logo.png" alt="Craftwork Atelier Logo" class="nav-logo-img">
+
+        <div class="nav-logo-text">
+
+          <span class="nav-logo-name">Craftwork Atelier</span>
+
+          <span class="nav-logo-tagline">Bespoke Upholstery &amp; Cushions</span>
+
+        </div>
+
+      </a>
+
+          <ul class="nav-links">
+
+        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+
+        <li class="nav-item"><a href="index2.html" class="nav-link">Home 2</a></li>
+
+        <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+
+        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+
+        <li class="nav-item">
+
+          <a href="fabric-gallery.html" class="nav-link">Gallery <svg class="dropdown-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 1l4 4 4-4"/></svg></a>
+
+          <div class="nav-dropdown">
+
+            <a href="fabric-gallery.html">Fabric Gallery</a>
+
+            <a href="transformations.html">Transformations</a>
+
+          </div>
+
+        </li>
+
+        <li class="nav-item"><a href="pricing.html" class="nav-link active">Pricing</a></li>
+
+        <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+
+        <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+
+      </ul>
+
+          <div class="nav-controls">
+
+        <button class="nav-toggle-btn" data-theme-toggle title="Toggle Dark Mode" aria-label="Toggle dark mode"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button>
+
+        <button class="nav-toggle-btn" data-rtl-toggle title="Toggle RTL">RTL</button>
+
+        <a href="contact.html" class="btn btn-primary btn-sm">Get a Quote</a>
+
+        <button class="hamburger" aria-label="Open Menu"><span></span><span></span><span></span></button>
+
+      </div>
+
+  </div></div>
+
+</nav>
+
+<div class="mobile-overlay"></div>
+
+<nav class="mobile-nav">
+
+  <button class="mobile-nav-close" aria-label="Close menu"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+
+  <div class="mobile-nav-links">
+
+    <a href="index.html">Home</a>
+
+    <a href="index2.html">Home 2</a>
+
+    <a href="about.html">About</a>
+
+    <a href="services.html">Services</a>
+
+    <a href="fabric-gallery.html">Fabric Gallery</a>
+
+    <a href="transformations.html">Transformations</a>
+
+    <a href="pricing.html">Pricing</a>
+
+    <a href="blog.html">Blog</a>
+
+    <a href="contact.html">Contact</a>
+
+  </div>
+
+  <div class="mobile-nav-actions">
+
+    <a href="contact.html" class="btn btn-primary">Get a Quote</a>
+
+  </div>
+
+</nav>
+
+
+
+<div class="page-hero">
+
   <img class="page-hero-bg" src="https://images.unsplash.com/photo-1536867520774-5b4f2628a69b?w=1800&h=900&fit=crop&crop=entropy&auto=format&q=80" alt="" aria-hidden="true" loading="eager" fetchpriority="high">
 
-  <div class="page-hero-overlay"></div>
-  <div class="container"><div class="page-hero-content">
-    <div class="section-label" style="justify-content:center;margin-bottom:1.25rem">Pricing</div>
-    <h1 class="page-hero-title">Transparent Pricing,<br>No Surprises</h1>
-    <p class="page-hero-desc">We believe premium craftsmanship should come with complete pricing clarity. Every quote is detailed, itemised and obligation-free.</p>
-  </div></div>
-</div>
-
-<!-- SECTION 1: Pricing Cards -->
-<section class="section">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <div class="section-label">Our Packages</div>
-      <h2 class="section-title">Choose Your <span class="text-accent">Experience</span></h2>
-      <p class="section-subtitle">From essential restoration to our full white-glove service — choose the package that suits your needs and budget.</p>
-    </div>
-    <div class="grid grid-3 reveal">
-      <div class="pricing-card">
-        <div class="pricing-tier">Essential</div>
-        <div class="pricing-title">Classic Restore</div>
-        <div class="pricing-price"><span class="pricing-currency">£</span><span class="pricing-amount">245</span><span class="pricing-period">starting from</span></div>
-        <p class="pricing-desc">Perfect for single chairs and smaller pieces. Quality craftsmanship with our standard fabric range.</p>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Frame structural assessment</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Padding renewal</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Standard fabric range (150+ options)</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Piped edges</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Studio collection &amp; delivery</li>
-          <li class="pricing-feature unavail"><span class="pricing-check"><svg class="cross-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Home collection included</li>
-          <li class="pricing-feature unavail"><span class="pricing-check"><svg class="cross-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Spring replacement</li>
-        </ul>
-        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">Get a Quote</a>
-      </div>
-      <div class="pricing-card featured">
-        <div class="pricing-featured-badge">Most Popular</div>
-        <div class="pricing-tier">Signature</div>
-        <div class="pricing-title">Artisan Transformation</div>
-        <div class="pricing-price"><span class="pricing-currency">£</span><span class="pricing-amount">480</span><span class="pricing-period">starting from</span></div>
-        <p class="pricing-desc">Our most popular package. Complete restoration with access to our full premium fabric collection.</p>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Full frame structural repair</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Spring &amp; webbing replacement</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Premium fabric range (500+ options)</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Hand-piped edges &amp; tufting available</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Free home collection &amp; delivery</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Fabric sample service</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> 25-point quality inspection</li>
-        </ul>
-        <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Get a Quote</a>
-      </div>
-      <div class="pricing-card">
-        <div class="pricing-tier">Heritage</div>
-        <div class="pricing-title">White Glove Service</div>
-        <div class="pricing-price"><span class="pricing-currency">£</span><span class="pricing-amount">850</span><span class="pricing-period">starting from</span></div>
-        <p class="pricing-desc">The ultimate atelier experience for heirloom pieces, antiques and commercial projects.</p>
-        <ul class="pricing-features">
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Everything in Artisan package</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Antique specialist assessment</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Bespoke period-correct techniques</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Design director consultation</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Priority turnaround (7-10 days)</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> White-glove installation service</li>
-          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Photographic documentation</li>
-        </ul>
-        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">Get a Quote</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 2: Price Guide Table -->
-<section class="section" style="background:var(--bg-secondary)">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <div class="section-label">Price Guide</div>
-      <h2 class="section-title">Service <span class="text-accent">Price Ranges</span></h2>
-      <p class="section-subtitle">Prices vary based on fabric choice, condition of piece and specific requirements. All quotes are itemised and fixed-price.</p>
-    </div>
-    <div class="reveal table-wrap">
-      <table class="compare-table">
-        <thead><tr><th>Service</th><th>Starting From</th><th>Typical Range</th><th>Includes Fabric</th><th>Free Collection</th></tr></thead>
-        <tbody>
-          <tr><td><strong>Armchair Restoration</strong></td><td class="price-range">£245</td><td>£245 – £480</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>2-Seat Sofa Reupholstery</strong></td><td class="price-range">£480</td><td>£480 – £780</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>3-Seat Sofa Reupholstery</strong></td><td class="price-range">£620</td><td>£620 – £1,100</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>Chesterfield Sofa</strong></td><td class="price-range">£780</td><td>£780 – £1,400</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>Headboard (King size)</strong></td><td class="price-range">£185</td><td>£185 – £320</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>Dining Chair (each)</strong></td><td class="price-range">£65</td><td>£65 – £145</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>Outdoor Cushion (each)</strong></td><td class="price-range">£55</td><td>£55 – £120</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-          <tr><td><strong>Custom Scatter Cushion</strong></td><td class="price-range">£35</td><td>£35 – £85</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="cross"><svg class="cross-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
-          <tr><td><strong>Bench / Ottoman</strong></td><td class="price-range">£120</td><td>£120 – £280</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:1rem;text-align:center">* Prices include labour, padding and standard fabric. Premium fabric selections may incur additional cost. All prices include VAT.</p>
-  </div>
-</section>
-
-<!-- SECTION 3: What's Included -->
-<section class="section">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <div class="section-label">Every Service Includes</div>
-      <h2 class="section-title">What's Always <span class="text-accent">Included</span></h2>
-    </div>
-    <div class="grid grid-4 reveal">
-      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">Frame Assessment</div><div style="font-size:0.85rem;color:var(--text-muted)">Structural check and repairs included in every service</div></div>
-      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">Padding Renewal</div><div style="font-size:0.85rem;color:var(--text-muted)">New CMHR foam, fibre or natural hair padding throughout</div></div>
-      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">5-Year Guarantee</div><div style="font-size:0.85rem;color:var(--text-muted)">Comprehensive craftsmanship warranty on all work</div></div>
-      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">25-Point Inspection</div><div style="font-size:0.85rem;color:var(--text-muted)">Rigorous quality check before every delivery</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 4: FAQ -->
-<section class="section" style="background:var(--bg-secondary)">
-  <div class="container">
-    <div class="section-header text-center reveal">
-      <div class="section-label">Pricing FAQ</div>
-      <h2 class="section-title">Your Pricing <span class="text-accent">Questions Answered</span></h2>
-    </div>
-    <div style="max-width:720px;margin:0 auto" class="reveal">
-      <div class="faq-list">
-        <div class="faq-item"><div class="faq-question">Are quotes fixed-price?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">Yes. Once we have assessed your piece and you have confirmed your fabric choice, we provide a fixed-price quote. There will never be unexpected additions to your invoice unless you request additional work during the process.</div></div></div>
-        <div class="faq-item"><div class="faq-question">Does the price include fabric?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">All our standard service prices include fabric from our core collection. If you choose a premium designer fabric from our extended range, we'll quote the additional fabric cost separately — always clearly itemised.</div></div></div>
-        <div class="faq-item"><div class="faq-question">Do you charge for the initial consultation?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">No — consultations are completely free of charge, whether in our studio or at your home. We believe in earning your business through expertise and honesty, not through commitment fees.</div></div></div>
-        <div class="faq-item"><div class="faq-question">What payment methods do you accept?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">We accept BACS bank transfer, all major credit/debit cards and cheque. A 30% deposit is required when confirming your order, with the balance due upon delivery. Finance options are available for orders over £1,000.</div></div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 5: Testimonial + Quote CTA -->
-<section class="section">
-  <div class="container">
-    <div class="estimate-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
-      <div class="reveal-left">
-        <div class="testimonial-card">
-          <div class="testimonial-quote">&ldquo;</div>
-          <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p class="testimonial-text">I was expecting upholstery to be a vague, quote-it-on-the-day experience. Craftwork Atelier sent a fully itemised quote within 24 hours of my initial email. The final invoice matched exactly. Absolutely no surprises.</p>
-          <div class="testimonial-author">
-            <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--border-color)"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="Nicholas Hartley" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
-            <div><div class="testimonial-name">Nicholas Hartley</div><div class="testimonial-role">Property Investor, Mayfair</div></div>
-          </div>
-        </div>
-      </div>
-      <div class="reveal-right">
-        <div class="section-label">Get Your Quote</div>
-        <h2 class="section-title">Request a<br><span class="text-accent">Free Estimate</span></h2>
-        <p style="color:var(--text-muted);margin:1rem 0 2rem;line-height:1.75">Not sure which package is right for you? Contact us with photos of your piece and we'll provide a clear, no-obligation estimate within 24 hours.</p>
-        <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem">
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem"><span style="color:var(--sage);display:inline-flex;align-items:center"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Free assessment, no commitment required</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem"><span style="color:var(--sage);display:inline-flex;align-items:center"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Photo quote accepted — no visit needed</div>
-          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem"><span style="color:var(--sage);display:inline-flex;align-items:center"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Response within 24 working hours</div>
-        </div>
-        <div style="display:flex;gap:1rem;flex-wrap:wrap">
-          <a href="contact.html" class="btn btn-primary btn-lg">Request Free Quote</a>
-          <a href="tel:+442079460123" class="btn btn-outline btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Us</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SECTION 6: Finance + Payment Info -->
-<section style="background:var(--bg-secondary);padding:4rem 0">
-  <div class="container">
-    <div class="section-header reveal">
-      <div class="section-label">Payment &amp; Finance</div>
-      <h2 class="section-title">Pay Your <span class="text-accent">Way</span></h2>
-      <p class="section-subtitle">Simple deposits, 0% finance options and our price-match promise — premium craft with complete payment clarity.</p>
-    </div>
-    <div class="grid grid-3 reveal pay-grid">
-      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:2rem">
-        <div class="pricing-method-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-        <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">Flexible Payment</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7">30% deposit on confirmation. Balance due on delivery. We accept bank transfer, all major cards and cheque.</p>
-      </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:2rem">
-        <div class="pricing-method-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg></div>
-        <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">Finance Available</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7">0% interest finance on orders over £1,000 through our preferred finance partner. Subject to status.</p>
-      </div>
-      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:2rem">
-        <div class="pricing-method-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
-        <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">Price Match Promise</h3>
-        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7">We will match any like-for-like written quote from a Guild-approved upholsterer. Quality guaranteed.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-top">
-    <div class="container">
-      <div class="footer-grid">
-        <div>
-          <a href="index.html" class="footer-brand">
-            <img src="assets/images/logo.png" alt="Craftwork Atelier Logo" class="footer-logo-img">
-            <div class="footer-brand-text">
-              <div class="footer-brand-name">Craftwork Atelier</div>
-              <div class="footer-brand-tagline">Bespoke Upholstery &amp; Cushion Makers</div>
-            </div>
-          </a>
-          <p class="footer-desc">Restoring cherished furniture and creating bespoke cushions with master craftsmanship, premium fabrics, and genuine passion since 1987.</p>
-          <div class="footer-socials">
-            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X (Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg></a>
-            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
-          </div>
-        </div>
-        <div>
-          <h2 class="footer-col-title">Quick Links</h2>
-          <ul class="footer-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="index2.html">Home 2</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="fabric-gallery.html">Gallery</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="contact.html">Contact</a></li>
-          </ul>
-        </div>
-        <div>
-          <h2 class="footer-col-title">Contact Us</h2>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div class="footer-contact-text"><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">14 Heritage Lane, Notting Hill<br>London W11 2QA</a></div>
-          </div>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div class="footer-contact-text"><a href="tel:+442079460123">+44 (0)20 7946 0123</a><br><small>Mon&ndash;Fri 9am&ndash;6pm &middot; Sat 10am&ndash;4pm</small></div>
-          </div>
-          <div class="footer-contact-item">
-            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div class="footer-contact-text"><a href="mailto:hello@craftworkatelier.com">hello@craftworkatelier.com</a></div>
-          </div>
-        </div>
-        <div>
-          <h2 class="footer-col-title">Newsletter</h2>
-          <p class="footer-newsletter-desc">Fabric spotlights, care tips and exclusive offers &mdash; join 3,200+ subscribers.</p>
-          <form class="footer-newsletter-form">
-            <input type="email" name="email" class="footer-newsletter-input" placeholder="Your email address" aria-label="Email address" required>
-            <button type="submit" class="footer-newsletter-btn">Subscribe</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="container">
-    <div class="footer-bottom">
-      <p class="footer-copyright">&copy; 2026 Craftwork Atelier. All rights reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="privacy-policy.html">Privacy Policy</a>
-        <span class="footer-bottom-sep" aria-hidden="true">|</span>
-        <a href="terms-conditions.html">Terms &amp; Conditions</a>
-        <span class="footer-bottom-sep" aria-hidden="true">|</span>
-        <a href="sitemap.html">Sitemap</a>
-      </div>
-    </div>
-  </div>
-</footer>
-<div class="lightbox" id="lightbox"><div class="lightbox-inner"><button class="lightbox-close" aria-label="Close lightbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div></div>
-<div class="toast-container"></div>
-<button class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
-<script src="assets/js/main.js"></script>
-</body>
-</html>
+  <div class="page-hero-overlay"></div>
+
+  <div class="container"><div class="page-hero-content">
+
+    <div class="section-label" style="justify-content:center;margin-bottom:1.25rem">Pricing</div>
+
+    <h1 class="page-hero-title">Transparent Pricing,<br>No Surprises</h1>
+
+    <p class="page-hero-desc">We believe premium craftsmanship should come with complete pricing clarity. Every quote is detailed, itemised and obligation-free.</p>
+
+  </div></div>
+
+</div>
+
+
+
+<!-- SECTION 1: Pricing Cards -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-header text-center reveal">
+
+      <div class="section-label">Our Packages</div>
+
+      <h2 class="section-title">Choose Your <span class="text-accent">Experience</span></h2>
+
+      <p class="section-subtitle">From essential restoration to our full white-glove service — choose the package that suits your needs and budget.</p>
+
+    </div>
+
+    <div class="grid grid-3 reveal">
+
+      <div class="pricing-card">
+
+        <div class="pricing-tier">Essential</div>
+
+        <div class="pricing-title">Classic Restore</div>
+
+        <div class="pricing-price"><span class="pricing-currency">£</span><span class="pricing-amount">245</span><span class="pricing-period">starting from</span></div>
+
+        <p class="pricing-desc">Perfect for single chairs and smaller pieces. Quality craftsmanship with our standard fabric range.</p>
+
+        <ul class="pricing-features">
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Frame structural assessment</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Padding renewal</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Standard fabric range (150+ options)</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Piped edges</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Studio collection &amp; delivery</li>
+
+          <li class="pricing-feature unavail"><span class="pricing-check"><svg class="cross-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Home collection included</li>
+
+          <li class="pricing-feature unavail"><span class="pricing-check"><svg class="cross-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span> Spring replacement</li>
+
+        </ul>
+
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">Get a Quote</a>
+
+      </div>
+
+      <div class="pricing-card featured">
+
+        <div class="pricing-featured-badge">Most Popular</div>
+
+        <div class="pricing-tier">Signature</div>
+
+        <div class="pricing-title">Artisan Transformation</div>
+
+        <div class="pricing-price"><span class="pricing-currency">£</span><span class="pricing-amount">480</span><span class="pricing-period">starting from</span></div>
+
+        <p class="pricing-desc">Our most popular package. Complete restoration with access to our full premium fabric collection.</p>
+
+        <ul class="pricing-features">
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Full frame structural repair</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Spring &amp; webbing replacement</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Premium fabric range (500+ options)</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Hand-piped edges &amp; tufting available</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Free home collection &amp; delivery</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Fabric sample service</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> 25-point quality inspection</li>
+
+        </ul>
+
+        <a href="contact.html" class="btn btn-primary" style="width:100%;justify-content:center">Get a Quote</a>
+
+      </div>
+
+      <div class="pricing-card">
+
+        <div class="pricing-tier">Heritage</div>
+
+        <div class="pricing-title">White Glove Service</div>
+
+        <div class="pricing-price"><span class="pricing-currency">£</span><span class="pricing-amount">850</span><span class="pricing-period">starting from</span></div>
+
+        <p class="pricing-desc">The ultimate atelier experience for heirloom pieces, antiques and commercial projects.</p>
+
+        <ul class="pricing-features">
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Everything in Artisan package</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Antique specialist assessment</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Bespoke period-correct techniques</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Design director consultation</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Priority turnaround (7-10 days)</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> White-glove installation service</li>
+
+          <li class="pricing-feature"><span class="pricing-check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Photographic documentation</li>
+
+        </ul>
+
+        <a href="contact.html" class="btn btn-outline" style="width:100%;justify-content:center">Get a Quote</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SECTION 2: Price Guide Table -->
+
+<section class="section" style="background:var(--bg-secondary)">
+
+  <div class="container">
+
+    <div class="section-header text-center reveal">
+
+      <div class="section-label">Price Guide</div>
+
+      <h2 class="section-title">Service <span class="text-accent">Price Ranges</span></h2>
+
+      <p class="section-subtitle">Prices vary based on fabric choice, condition of piece and specific requirements. All quotes are itemised and fixed-price.</p>
+
+    </div>
+
+    <div class="reveal table-wrap">
+
+      <table class="compare-table">
+
+        <thead><tr><th>Service</th><th>Starting From</th><th>Typical Range</th><th>Includes Fabric</th><th>Free Collection</th></tr></thead>
+
+        <tbody>
+
+          <tr><td><strong>Armchair Restoration</strong></td><td class="price-range">£245</td><td>£245 – £480</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>2-Seat Sofa Reupholstery</strong></td><td class="price-range">£480</td><td>£480 – £780</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>3-Seat Sofa Reupholstery</strong></td><td class="price-range">£620</td><td>£620 – £1,100</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>Chesterfield Sofa</strong></td><td class="price-range">£780</td><td>£780 – £1,400</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>Headboard (King size)</strong></td><td class="price-range">£185</td><td>£185 – £320</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>Dining Chair (each)</strong></td><td class="price-range">£65</td><td>£65 – £145</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>Outdoor Cushion (each)</strong></td><td class="price-range">£55</td><td>£55 – £120</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+          <tr><td><strong>Custom Scatter Cushion</strong></td><td class="price-range">£35</td><td>£35 – £85</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="cross"><svg class="cross-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></td></tr>
+
+          <tr><td><strong>Bench / Ottoman</strong></td><td class="price-range">£120</td><td>£120 – £280</td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td><td class="check"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></td></tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <p style="font-size:0.82rem;color:var(--text-muted);margin-top:1rem;text-align:center">* Prices include labour, padding and standard fabric. Premium fabric selections may incur additional cost. All prices include VAT.</p>
+
+  </div>
+
+</section>
+
+
+
+<!-- SECTION 3: What's Included -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="section-header text-center reveal">
+
+      <div class="section-label">Every Service Includes</div>
+
+      <h2 class="section-title">What's Always <span class="text-accent">Included</span></h2>
+
+    </div>
+
+    <div class="grid grid-4 reveal">
+
+      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">Frame Assessment</div><div style="font-size:0.85rem;color:var(--text-muted)">Structural check and repairs included in every service</div></div>
+
+      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 12 12 17 22 12"/><polyline points="2 17 12 22 22 17"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">Padding Renewal</div><div style="font-size:0.85rem;color:var(--text-muted)">New CMHR foam, fibre or natural hair padding throughout</div></div>
+
+      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">5-Year Guarantee</div><div style="font-size:0.85rem;color:var(--text-muted)">Comprehensive craftsmanship warranty on all work</div></div>
+
+      <div class="include-card"><div class="include-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><div style="font-weight:700;margin-bottom:0.4rem">25-Point Inspection</div><div style="font-size:0.85rem;color:var(--text-muted)">Rigorous quality check before every delivery</div></div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SECTION 4: FAQ -->
+
+<section class="section" style="background:var(--bg-secondary)">
+
+  <div class="container">
+
+    <div class="section-header text-center reveal">
+
+      <div class="section-label">Pricing FAQ</div>
+
+      <h2 class="section-title">Your Pricing <span class="text-accent">Questions Answered</span></h2>
+
+    </div>
+
+    <div style="max-width:720px;margin:0 auto" class="reveal">
+
+      <div class="faq-list">
+
+        <div class="faq-item"><div class="faq-question">Are quotes fixed-price?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">Yes. Once we have assessed your piece and you have confirmed your fabric choice, we provide a fixed-price quote. There will never be unexpected additions to your invoice unless you request additional work during the process.</div></div></div>
+
+        <div class="faq-item"><div class="faq-question">Does the price include fabric?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">All our standard service prices include fabric from our core collection. If you choose a premium designer fabric from our extended range, we'll quote the additional fabric cost separately — always clearly itemised.</div></div></div>
+
+        <div class="faq-item"><div class="faq-question">Do you charge for the initial consultation?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">No — consultations are completely free of charge, whether in our studio or at your home. We believe in earning your business through expertise and honesty, not through commitment fees.</div></div></div>
+
+        <div class="faq-item"><div class="faq-question">What payment methods do you accept?<span class="faq-icon">+</span></div><div class="faq-answer"><div class="faq-answer-inner">We accept BACS bank transfer, all major credit/debit cards and cheque. A 30% deposit is required when confirming your order, with the balance due upon delivery. Finance options are available for orders over £1,000.</div></div></div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SECTION 5: Testimonial + Quote CTA -->
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="estimate-split-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+
+      <div class="reveal-left">
+
+        <div class="testimonial-card">
+
+          <div class="testimonial-quote">&ldquo;</div>
+
+          <div class="testimonial-stars"><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg class="star-icon" width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+
+          <p class="testimonial-text">I was expecting upholstery to be a vague, quote-it-on-the-day experience. Craftwork Atelier sent a fully itemised quote within 24 hours of my initial email. The final invoice matched exactly. Absolutely no surprises.</p>
+
+          <div class="testimonial-author">
+
+            <div style="width:48px;height:48px;border-radius:50%;overflow:hidden;flex-shrink:0;border:2px solid var(--border-color)"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&h=100&fit=crop&crop=face&auto=format&q=80" alt="Nicholas Hartley" loading="lazy" style="width:100%;height:100%;object-fit:cover"></div>
+
+            <div><div class="testimonial-name">Nicholas Hartley</div><div class="testimonial-role">Property Investor, Mayfair</div></div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="reveal-right">
+
+        <div class="section-label">Get Your Quote</div>
+
+        <h2 class="section-title">Request a<br><span class="text-accent">Free Estimate</span></h2>
+
+        <p style="color:var(--text-muted);margin:1rem 0 2rem;line-height:1.75">Not sure which package is right for you? Contact us with photos of your piece and we'll provide a clear, no-obligation estimate within 24 hours.</p>
+
+        <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem">
+
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem"><span style="color:var(--sage);display:inline-flex;align-items:center"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Free assessment, no commitment required</div>
+
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem"><span style="color:var(--sage);display:inline-flex;align-items:center"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Photo quote accepted — no visit needed</div>
+
+          <div style="display:flex;align-items:center;gap:0.75rem;font-size:0.9rem"><span style="color:var(--sage);display:inline-flex;align-items:center"><svg class="check-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span> Response within 24 working hours</div>
+
+        </div>
+
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+
+          <a href="contact.html" class="btn btn-primary btn-lg">Request Free Quote</a>
+
+          <a href="tel:+442079460123" class="btn btn-outline btn-lg"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right:6px;vertical-align:middle"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Call Us</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- SECTION 6: Finance + Payment Info -->
+
+<section style="background:var(--bg-secondary);padding:4rem 0">
+
+  <div class="container">
+
+    <div class="section-header reveal">
+
+      <div class="section-label">Payment &amp; Finance</div>
+
+      <h2 class="section-title">Pay Your <span class="text-accent">Way</span></h2>
+
+      <p class="section-subtitle">Simple deposits, 0% finance options and our price-match promise — premium craft with complete payment clarity.</p>
+
+    </div>
+
+    <div class="grid grid-3 reveal pay-grid">
+
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:2rem">
+
+        <div class="pricing-method-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
+
+        <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">Flexible Payment</h3>
+
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7">30% deposit on confirmation. Balance due on delivery. We accept bank transfer, all major cards and cheque.</p>
+
+      </div>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:2rem">
+
+        <div class="pricing-method-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/></svg></div>
+
+        <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">Finance Available</h3>
+
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7">0% interest finance on orders over £1,000 through our preferred finance partner. Subject to status.</p>
+
+      </div>
+
+      <div style="background:var(--bg-card);border:1px solid var(--border-color);border-radius:var(--radius-lg);padding:2rem">
+
+        <div class="pricing-method-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="6"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg></div>
+
+        <h3 style="font-family:var(--font-serif);font-size:1.2rem;font-weight:600;margin-bottom:0.5rem">Price Match Promise</h3>
+
+        <p style="font-size:0.88rem;color:var(--text-muted);line-height:1.7">We will match any like-for-like written quote from a Guild-approved upholsterer. Quality guaranteed.</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<footer>
+
+  <div class="footer-top">
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div>
+
+          <a href="index.html" class="footer-brand">
+
+            <img src="assets/images/logo.png" alt="Craftwork Atelier Logo" class="footer-logo-img">
+
+            <div class="footer-brand-text">
+
+              <div class="footer-brand-name">Craftwork Atelier</div>
+
+              <div class="footer-brand-tagline">Bespoke Upholstery &amp; Cushion Makers</div>
+
+            </div>
+
+          </a>
+
+          <p class="footer-desc">Restoring cherished furniture and creating bespoke cushions with master craftsmanship, premium fabrics, and genuine passion since 1987.</p>
+
+          <div class="footer-socials">
+
+            <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Instagram"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+
+            <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="Facebook"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+
+            <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="X (Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg></a>
+
+            <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer" class="footer-social" aria-label="YouTube"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-1.92 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg></a>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h2 class="footer-col-title">Quick Links</h2>
+
+          <ul class="footer-links">
+
+            <li><a href="index.html">Home</a></li>
+
+            <li><a href="index2.html">Home 2</a></li>
+
+            <li><a href="about.html">About</a></li>
+
+            <li><a href="services.html">Services</a></li>
+
+            <li><a href="fabric-gallery.html">Gallery</a></li>
+
+            <li><a href="pricing.html">Pricing</a></li>
+
+            <li><a href="blog.html">Blog</a></li>
+
+            <li><a href="contact.html">Contact</a></li>
+
+          </ul>
+
+        </div>
+
+        <div>
+
+          <h2 class="footer-col-title">Contact Us</h2>
+
+          <div class="footer-contact-item">
+
+            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+
+            <div class="footer-contact-text"><a href="https://maps.google.com" target="_blank" rel="noopener noreferrer">14 Heritage Lane, Notting Hill<br>London W11 2QA</a></div>
+
+          </div>
+
+          <div class="footer-contact-item">
+
+            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+
+            <div class="footer-contact-text"><a href="tel:+442079460123">+44 (0)20 7946 0123</a><br><small>Mon&ndash;Fri 9am&ndash;6pm &middot; Sat 10am&ndash;4pm</small></div>
+
+          </div>
+
+          <div class="footer-contact-item">
+
+            <div class="footer-contact-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><polyline points="22,6 12,13 2,6"/></svg></div>
+
+            <div class="footer-contact-text"><a href="mailto:hello@craftworkatelier.com">hello@craftworkatelier.com</a></div>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <h2 class="footer-col-title">Newsletter</h2>
+
+          <p class="footer-newsletter-desc">Fabric spotlights, care tips and exclusive offers &mdash; join 3,200+ subscribers.</p>
+
+          <form class="footer-newsletter-form">
+
+            <input type="email" name="email" class="footer-newsletter-input" placeholder="Your email address" aria-label="Email address" required>
+
+            <button type="submit" class="footer-newsletter-btn">Subscribe</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <div class="footer-bottom">
+
+      <p class="footer-copyright">&copy; 2026 Craftwork Atelier. All rights reserved.</p>
+
+      <div class="footer-bottom-links">
+
+        <a href="privacy-policy.html">Privacy Policy</a>
+
+        <span class="footer-bottom-sep" aria-hidden="true">|</span>
+
+        <a href="terms-conditions.html">Terms &amp; Conditions</a>
+
+        <span class="footer-bottom-sep" aria-hidden="true">|</span>
+
+        <a href="sitemap.html">Sitemap</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+<div class="lightbox" id="lightbox"><div class="lightbox-inner"><button class="lightbox-close" aria-label="Close lightbox"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button><img class="lightbox-img" src="" alt=""><p class="lightbox-caption"></p></div></div>
+
+<div class="toast-container"></div>
+
+<button class="back-to-top" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></button>
+
+<script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
+
